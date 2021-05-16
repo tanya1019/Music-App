@@ -12,6 +12,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import Notifications from './Screens/Notifications';
 import Account from './Screens/Account';
 import {Entypo, Ionicons} from 'react-native-vector-icons'
+import SignOut from './Screens/SignOut';
 
 const Stack = createStackNavigator();
 export default function App(){
@@ -34,22 +35,22 @@ const Tab = createMaterialBottomTabNavigator();
 function bottomtab(){
   return (
     <Tab.Navigator 
-        activeColor="#FF2871"
-        barStyle={{ backgroundColor: "yellow" }}
+        activeColor="#066EF5"
+        barStyle={{ backgroundColor: "black" }}
         shifting={true}>
 
 
       <Tab.Screen name = 'HomeScreen' component = {drawer}
       options = {{
         tabBarIcon : ({color}) => (
-          <Entypo name="home" size={24} color="green" />
+          <Entypo name="home" size={24} color={color} />
         ),
       }}
       />
       <Tab.Screen name = 'Settings' component = {Settings}
        options = {{
         tabBarIcon : ({color}) => (
-          <Ionicons name="settings" size={24} color="green" />
+          <Ionicons name="settings" size={24} color={color} />
         ),
       }}
       />
@@ -66,6 +67,7 @@ function drawer(){
     <Dra.Screen name = 'Home' component = {Home}/>
     <Dra.Screen name = 'Notifications' component = {Notifications}/>
     <Dra.Screen name = 'Account' component = {Account}/>
+    <Dra.Screen name = 'SignOut' component = {SignOut}/>  
   </Dra.Navigator>
   );
 }

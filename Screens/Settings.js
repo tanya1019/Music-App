@@ -1,12 +1,20 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 const Settings = ({navigation}) => {
     return (
         <View style = {styles.container}>
-            <Text>
-                This is Setting Screen
-            </Text>
+            <View>
+                <Ionicons name="arrow-back" size={24} color="black" />
+            </View>
+
+            <View style = {{justifyContent:'center', alignItems: 'center'}}>
+                <Text>
+                    This is Settings Screen
+                </Text>
+            </View>
+
         </View>
     )
 }
@@ -14,8 +22,9 @@ const Settings = ({navigation}) => {
 export default Settings;
 
 const styles = StyleSheet.create({
+
     container:{
-        paddingTop:100,
+        paddingTop:50,
         flex:1
     }
     

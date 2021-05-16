@@ -4,63 +4,83 @@ import { StyleSheet, Text, TextInput, View , Button, TouchableOpacity, ImageBack
 const SignUp = ({navigation}) => {
     return (
         <View style = {styles.container}>
-            <ImageBackground source = {{uri:"https://i.pinimg.com/236x/0f/ba/42/0fba420aedbab07a287043ce65dc0184--bright-lights-wallpaper-iphone.jpg"}}
-            style = {styles.image}>
-            <TextInput placeholder = 'Enter Username' style = {styles.input} placeholderTextColor = 'yellow'/>
-            <TextInput placeholder = 'Enter Email' style = {styles.input} placeholderTextColor = 'yellow'/>
-            <TextInput placeholder = 'Enter Password' style = {styles.input} placeholderTextColor = 'yellow'/>
-            <TextInput placeholder = 'Confirm Password' style = {styles.input} placeholderTextColor = 'yellow'/>
+            <ImageBackground source = {{uri:"https://i.pinimg.com/originals/d3/96/a9/d396a94e2e55af1dc365ee3047db9ec9.jpg"}}
+                        style = {styles.image}
+                        blurRadius = {0.2}>
 
-            <TouchableOpacity style = {styles.login} onPress = {() => navigation.navigate('Login')}>
-                <Text style = {{color:'yellow', fontWeight:'bold'}}>
-                    Login
-                </Text>
-            </TouchableOpacity>
-            <TouchableOpacity style = {styles.signup} onPress = {() => navigation.navigate('Home')}>
-                <Text style = {{color:'yellow', fontWeight:'bold'}}>
-                    SignUp
-                </Text>
-            </TouchableOpacity>
+                <TextInput placeholder = 'Enter Username' style = {styles.input1} placeholderTextColor = '#066EF5'/>
+                <TextInput placeholder = 'Enter Email' style = {styles.input} placeholderTextColor = '#066EF5'/>
+                <TextInput placeholder = 'Enter Password' style = {styles.input} placeholderTextColor = '#066EF5'/>
+                <TextInput placeholder = 'Confirm Password' style = {styles.input} placeholderTextColor = '#066EF5'/>
+
+                <TouchableOpacity style = {styles.login} onPress = {() => navigation.navigate('Login')}>
+                    <Text style = {{color:'white', fontWeight:'bold' , fontSize:20}}>
+                        Login
+                    </Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style = {styles.signup} onPress = {() => navigation.navigate('Home')}>
+                    <Text style = {{color:'white', fontWeight:'bold', fontSize:20}}>
+                        SignUp
+                    </Text>
+                </TouchableOpacity>
+
             </ImageBackground>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+
     container:{
         justifyContent:'center', 
         alignItems:'center',
         flex:1
     },
+
     input:{
-        backgroundColor:'red',
+        backgroundColor:'white',
         justifyContent:'center', 
         alignItems:'center',
         borderRadius:20,
-        marginTop:5,
-        height:25,
+        marginTop:10,
+        height:30,
         width:250,
         marginLeft:10,
         paddingLeft:10
     },
+    input1:{
+        backgroundColor:'white',
+        justifyContent:'center', 
+        alignItems:'center',
+        borderRadius:20,
+        marginTop:100,
+        height:30,
+        width:250,
+        marginLeft:10,
+        paddingLeft:10
+    },
+
     signup:{
-        height:30,
-        width:70,
-        backgroundColor:'red',
+        height:40,
+        width:100,
+        backgroundColor:'#066EF5',
         borderRadius:20,
         justifyContent:"center",
         alignItems:"center",
-        marginTop:5
+        marginTop:10
     },
+
     login:{
-        height:30,
-        width:70,
-        backgroundColor:'red',
+        height:40,
+        width:100,
+        backgroundColor:'#066EF5',
         borderRadius:20,
         justifyContent:"center",
         alignItems:"center",
-        marginTop:40
+        marginTop:250
     },
+
     image:{
         width:"100%",
         height:"100%",
