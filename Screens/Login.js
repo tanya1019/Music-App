@@ -5,11 +5,11 @@ const Login = ({navigation}) => {
     return (
         <View style = {styles.container}>
             <ImageBackground 
-                blurRadius = {0.2}
+                blurRadius = {0.5}
                 source = {{uri:"https://i.pinimg.com/originals/d3/96/a9/d396a94e2e55af1dc365ee3047db9ec9.jpg"}}
                 style = {styles.image}>
 
-                <TextInput placeholder = 'Enter Email' style = {styles.input} placeholderTextColor = "#066EF5" />
+                <TextInput placeholder = 'Enter Email' style = {styles.input1} placeholderTextColor = "#066EF5" />
                 <TextInput placeholder = 'Enter Password' style = {styles.input} placeholderTextColor = "#066EF5"/>
 
                 <TouchableOpacity onPress = {() => navigation.navigate('Home')} style = {styles.button}>
@@ -17,6 +17,17 @@ const Login = ({navigation}) => {
                         Login
                     </Text>
                 </TouchableOpacity>
+                
+                <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
+                    <Text style = {{color:'white', fontSize:15 , marginTop:20 , paddingRight:7}}>
+                        Don't have an account?
+                    </Text>
+                <TouchableOpacity onPress = {() => navigation.navigate('SignUp')} style = {styles.button1}>
+                    <Text style = {{fontWeight:'bold', fontSize:15, color:"white"}}>
+                        SignUp
+                    </Text>
+                </TouchableOpacity>
+                </View>
         
             </ImageBackground>
         </View>
@@ -31,11 +42,21 @@ const styles = StyleSheet.create({
         flex:1
     },
 
+    input1:{
+        backgroundColor:"white",
+        height:40,
+        width:300,
+        marginBottom:10,
+        borderRadius:20,
+        paddingLeft:10,
+        marginTop:50
+    },
+
     input:{
         backgroundColor:"white",
         height:40,
         width:300,
-        marginBottom:15,
+        marginBottom:10,
         borderRadius:20,
         paddingLeft:10
     },
@@ -54,8 +75,20 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         borderRadius:20,
-        marginTop:350
+        marginTop:300,
+        
+    },
+
+    button1:{
+        height:30,
+        width:60,
+        backgroundColor:'#066EF5',
+        justifyContent:'center',
+        alignItems:'center',
+        borderRadius:20,
+        marginTop:20,
     }
+    
     
 })
 

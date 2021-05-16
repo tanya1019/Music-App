@@ -14,6 +14,7 @@ import Account from './Screens/Account';
 import {Entypo, Ionicons} from 'react-native-vector-icons'
 import SignOut from './Screens/SignOut';
 
+
 const Stack = createStackNavigator();
 export default function App(){
   return(

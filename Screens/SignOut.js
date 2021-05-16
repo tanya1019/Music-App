@@ -4,8 +4,11 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 const SignOut = ({navigation}) => {
     return (
         <View style = {styles.container}>
+            <Text style = {{color:'white', fontSize:25}}>
+                Are you sure, you want to SignOut?
+            </Text>
             <TouchableOpacity onPress = {() => navigation.navigate('Login')} style = {styles.button}>
-                    <Text style = {{fontWeight:'bold', fontSize:20, color:"white"}}>
+                    <Text style = {{fontWeight:'bold', fontSize:40, color:"white"}}>
                         SignOut
                     </Text>
                 </TouchableOpacity>
@@ -23,12 +26,13 @@ const styles = StyleSheet.create({
             backgroundColor:'black'
     },
     button:{
-        height:40,
-        width:100,
+        height:80,
+        width:200,
         backgroundColor:'#066EF5',
         justifyContent:'center',
         alignItems:'center',
-        borderRadius:20,
+        borderRadius:40,
+        marginTop:20
         
     }
 })

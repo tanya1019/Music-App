@@ -8,16 +8,12 @@ const SignUp = ({navigation}) => {
                         style = {styles.image}
                         blurRadius = {0.2}>
 
-                <TextInput placeholder = 'Enter Username' style = {styles.input1} placeholderTextColor = '#066EF5'/>
+                <TextInput placeholder = 'Enter Username' style = {styles.input} placeholderTextColor = '#066EF5'/>
                 <TextInput placeholder = 'Enter Email' style = {styles.input} placeholderTextColor = '#066EF5'/>
                 <TextInput placeholder = 'Enter Password' style = {styles.input} placeholderTextColor = '#066EF5'/>
                 <TextInput placeholder = 'Confirm Password' style = {styles.input} placeholderTextColor = '#066EF5'/>
 
-                <TouchableOpacity style = {styles.login} onPress = {() => navigation.navigate('Login')}>
-                    <Text style = {{color:'white', fontWeight:'bold' , fontSize:20}}>
-                        Login
-                    </Text>
-                </TouchableOpacity>
+               
 
                 <TouchableOpacity style = {styles.signup} onPress = {() => navigation.navigate('Home')}>
                     <Text style = {{color:'white', fontWeight:'bold', fontSize:20}}>
@@ -43,18 +39,7 @@ const styles = StyleSheet.create({
         justifyContent:'center', 
         alignItems:'center',
         borderRadius:20,
-        marginTop:10,
-        height:30,
-        width:250,
-        marginLeft:10,
-        paddingLeft:10
-    },
-    input1:{
-        backgroundColor:'white',
-        justifyContent:'center', 
-        alignItems:'center',
-        borderRadius:20,
-        marginTop:100,
+        marginBottom:10,
         height:30,
         width:250,
         marginLeft:10,
@@ -62,16 +47,6 @@ const styles = StyleSheet.create({
     },
 
     signup:{
-        height:40,
-        width:100,
-        backgroundColor:'#066EF5',
-        borderRadius:20,
-        justifyContent:"center",
-        alignItems:"center",
-        marginTop:10
-    },
-
-    login:{
         height:40,
         width:100,
         backgroundColor:'#066EF5',
@@ -86,7 +61,7 @@ const styles = StyleSheet.create({
         height:"100%",
         justifyContent:'center',
         alignItems:"center"
-    },
+    }
 
     
 })
