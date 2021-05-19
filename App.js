@@ -13,13 +13,17 @@ import Notifications from './Screens/Notifications';
 import Account from './Screens/Account';
 import {Entypo, Ionicons} from 'react-native-vector-icons'
 import SignOut from './Screens/SignOut';
+import {DrawerContent} from './Screens/DrawerContent';
+import MyMusic from './Screens/MyMusic';
+import Podcast from './Screens/Podcast';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 
 const Stack = createStackNavigator();
 export default function App(){
   return(
     <NavigationContainer>
-      <Stack.Navigator initialRouteName = 'SignUp'>
+      <Stack.Navigator initialRouteName = 'Login'>
         <Stack.Screen name = 'Login' component = {Login}
         options = {{headerShown : false }}/>
         <Stack.Screen name = 'SignUp' component = {SignUp}
@@ -41,17 +45,25 @@ function bottomtab(){
         shifting={true}>
 
 
-      <Tab.Screen name = 'HomeScreen' component = {drawer}
+      <Tab.Screen name = 'Home' component = {drawer}
       options = {{
         tabBarIcon : ({color}) => (
           <Entypo name="home" size={24} color={color} />
         ),
       }}
       />
-      <Tab.Screen name = 'Settings' component = {Settings}
+
+      <Tab.Screen name = 'Podcast' component = {Podcast}
+      options = {{
+        tabBarIcon : ({color}) => (
+          <FontAwesome5 name="podcast" size={24} color={color} />
+        ),
+      }}
+      />
+      <Tab.Screen name = 'MyMusic' component = {MyMusic}
        options = {{
         tabBarIcon : ({color}) => (
-          <Ionicons name="settings" size={24} color={color} />
+          <Entypo name="folder-music" size={24} color={color} />
         ),
       }}
       />
@@ -64,11 +76,11 @@ function bottomtab(){
 const Dra = createDrawerNavigator();
 function drawer(){
   return (
-  <Dra.Navigator>
+  <Dra.Navigator drawerContent = {(props) => <DrawerContent {...props}/>}>
     <Dra.Screen name = 'Home' component = {Home}/>
     <Dra.Screen name = 'Notifications' component = {Notifications}/>
     <Dra.Screen name = 'Account' component = {Account}/>
-    <Dra.Screen name = 'SignOut' component = {SignOut}/>  
+    <Dra.Screen name = 'Settings' component = {Settings}/>  
   </Dra.Navigator>
   );
 }

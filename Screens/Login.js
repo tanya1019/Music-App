@@ -1,3 +1,4 @@
+import { LinearGradient } from 'expo-linear-gradient'
 import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button, ImageBackground, TouchableOpacity } from 'react-native'
 
@@ -12,11 +13,13 @@ const Login = ({navigation}) => {
                 <TextInput placeholder = 'Enter Email' style = {styles.input1} placeholderTextColor = "#066EF5" />
                 <TextInput placeholder = 'Enter Password' style = {styles.input} placeholderTextColor = "#066EF5"/>
 
-                <TouchableOpacity onPress = {() => navigation.navigate('Home')} style = {styles.button}>
+                <LinearGradient style = {styles.button} colors = {['blue', '#066EF5' ,'#066EF5', 'blue' , 'blue']} >
+                <TouchableOpacity onPress = {() => navigation.navigate('Home')}>
                     <Text style = {{fontWeight:'bold', fontSize:20, color:"white"}}>
                         Login
                     </Text>
                 </TouchableOpacity>
+                </LinearGradient>
                 
                 <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
                     <Text style = {{color:'white', fontSize:15 , marginTop:20 , paddingRight:7}}>

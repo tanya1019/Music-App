@@ -1,17 +1,21 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-
+import {LinearGradient} from 'expo-linear-gradient';
 const SignOut = ({navigation}) => {
     return (
         <View style = {styles.container}>
+
             <Text style = {{color:'white', fontSize:25}}>
                 Are you sure, you want to SignOut?
             </Text>
-            <TouchableOpacity onPress = {() => navigation.navigate('Login')} style = {styles.button}>
+
+            <LinearGradient style = {styles.button} colors = {['blue', '#066EF5' ,'#066EF5', 'blue' , 'blue']} >
+                <TouchableOpacity onPress = {() => navigation.navigate('Login')}>
                     <Text style = {{fontWeight:'bold', fontSize:40, color:"white"}}>
-                        SignOut
+                            SignOut
                     </Text>
                 </TouchableOpacity>
+            </LinearGradient>
         </View>
     )
 }
