@@ -5,8 +5,12 @@ import { FontAwesome } from '@expo/vector-icons';
 import MusicList from '../CustomList/MusicList';
 import {StatusBar} from 'expo-status-bar';
 import { Feather } from '@expo/vector-icons'; 
+import MusicCatog from '../Home/MusicCatog';
+import RecentyPlayed from '../Home/RecentyPlayed'
+import Trending from '../Home/Trending';
+import TodaysPick from '../Home/TodaysPick';
 
-const Home = ({navigation}) => {
+const Home = (props) => {
     return (
 
         <View style = {styles.container}>
@@ -17,7 +21,7 @@ const Home = ({navigation}) => {
            
             <View style = {styles.header}>
                 <View style = {{width:'10%'}}>
-                    <TouchableOpacity onPress = {() => navigation.openDrawer()}>
+                    <TouchableOpacity onPress = {() => props.navigation.openDrawer()}>
                         <Entypo name="menu" size={28} color="black" />
                     </TouchableOpacity>
                 </View>
@@ -36,7 +40,7 @@ const Home = ({navigation}) => {
 {/* ---------------------------------------Search section -------------------------------------------------*/}
 
                 <View style = {styles.search}>
-                    <View style = {{width:'90%' , flexDirection:'row'}}>
+                    <View style = {{width:'90%' , flexDirection:'row', alignItems:'center'}}>
                         <FontAwesome name="search" size={18} color="grey" />
                         <TextInput style = {{width:"90%", paddingLeft:5}} placeholder = 'Search' />
                     </View>                   
@@ -44,7 +48,8 @@ const Home = ({navigation}) => {
                 </View>
 
 {/*---------------------------------Music List------------------------------------------------------------ */}
-            <View style = {{width:'100%', padding:10}}>
+            <ScrollView style = {{flex:1, width:"100%"}}>
+            {/* <View style = {{width:'100%', padding:10, height:200}}>
                <Text style = {{fontSize:20, fontWeight:'bold', color:'white'}}>
                    Recently Played
                </Text>
@@ -65,9 +70,9 @@ const Home = ({navigation}) => {
                </ScrollView>
             </View>
 
-            <View style = {{width:'100%', padding:10}}>    
+            <View style = {{width:'100%', padding:10, height:200}}>    
                 <Text style = {{fontSize:20, fontWeight:'bold', color:'white'}}>
-                    Recently Played
+                    In Demand
                 </Text>                
                 <ScrollView style = {{width:'100%' }} horizontal = {true}>
                         <MusicList Music = 'Shake It Off' Detail = 'Taylor Swift' />
@@ -85,7 +90,13 @@ const Home = ({navigation}) => {
                         <MusicList Music = 'Dance Monkey' Detail = 'Tones and I'/>
                     </ScrollView>
             </View>
-               
+    */}
+            <MusicCatog navigation = {props.navigation}/>
+            <RecentyPlayed navigation = {props.navigation}/>
+            <Trending navigation = {props.navigation}/>
+            <TodaysPick navigation = {props.navigation}/>
+
+            </ScrollView>
         </View>
     )
 }
@@ -120,7 +131,7 @@ const styles = StyleSheet.create({
         alignItems:'center',
         marginTop:10,
         borderRadius:20,
-        marginBottom:10
+        marginBottom:10,
     }
 
 })

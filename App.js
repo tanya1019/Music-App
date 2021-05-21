@@ -17,6 +17,10 @@ import {DrawerContent} from './Screens/DrawerContent';
 import MyMusic from './Screens/MyMusic';
 import Podcast from './Screens/Podcast';
 import { FontAwesome5 } from '@expo/vector-icons';
+import LanguagePref from './Settings/LanguagePref';
+import DownloadQuality from './Settings/DownloadQuality';
+import Eqalizer from './Settings/Eqalizer';
+import StreamingQuality from './Settings/StreamingQuality';
 
 
 const Stack = createStackNavigator();
@@ -30,6 +34,14 @@ export default function App(){
         options = {{headerShown : false }}/>
         <Stack.Screen name = 'Home' component = {bottomtab}
         options = {{headerShown : false }}/>
+        <Stack.Screen name = 'LanguagePref' component = {LanguagePref}
+        options = {{headerShown : false }}/>
+        <Stack.Screen name = 'DownloadQuality' component = {DownloadQuality}
+        options = {{headerShown:false}}/>
+        <Stack.Screen name = 'Eqalizer' component = {Eqalizer}
+        options = {{headerShown:false}}/>
+        <Stack.Screen name = 'StreamingQuality' component = {StreamingQuality}
+        options = {{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
