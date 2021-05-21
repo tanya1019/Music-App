@@ -11,7 +11,7 @@ const MyMusic = () => {
     return (
         <View style = {styles.container}>
              <View style = {{flexDirection:'row'}}>
-            <View style = {{width:50}}>
+            <View style = {{width:50 ,height :10}}>
                 <TouchableOpacity onPress = {() => props.navigation.navigate('Home')}>
                 <Ionicons name="arrow-back" size={24} color="#066EF5" />
                 </TouchableOpacity>
