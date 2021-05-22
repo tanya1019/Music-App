@@ -21,6 +21,7 @@ import LanguagePref from './Settings/LanguagePref';
 import DownloadQuality from './Settings/DownloadQuality';
 import Eqalizer from './Settings/Eqalizer';
 import StreamingQuality from './Settings/StreamingQuality';
+import Navigation from './Settings/Navigation';
 
 
 const Stack = createStackNavigator();
@@ -42,6 +43,9 @@ export default function App(){
         options = {{headerShown:false}}/>
         <Stack.Screen name = 'StreamingQuality' component = {StreamingQuality}
         options = {{headerShown:false}}/>
+        <Stack.Screen name = 'Navigation' component = {Navigation}
+        options = {{headerShown:false}}/>
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
