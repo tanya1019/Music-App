@@ -6,36 +6,107 @@ import { Feather } from '@expo/vector-icons';
 import MyDownloads from '../MyMusic/MyDownloads';
 import MyLibrary from '../MyMusic/MyLibrary';
 import MyFavs from '../MyMusic/MyFavs';
+import { AntDesign } from '@expo/vector-icons';
 
 const MyMusic = () => {
     return (
         <View style = {styles.container}>
-             <View style = {{flexDirection:'row'}}>
-            <View style = {{width:50 ,height :10}}>
-                <TouchableOpacity onPress = {() => props.navigation.navigate('Home')}>
-                <Ionicons name="arrow-back" size={24} color="#066EF5" />
-                </TouchableOpacity>
-            </View>
 
-            <View style = {{ width : '80%',justifyContent:'center', alignItems: 'center'}}>
-                <Text style = {{color:'#066EF5', fontSize:20}}>
-                    This is Settings Screen
-                </Text>
-            </View>
+{/*--------------------------------------------Header----------------------------------------------------------- */}
+
+            <View style = {styles.header}>
+                <View style = {{ width : '80%',justifyContent:'center', alignItems: 'center'}}>
+                    <Text style = {{color:'black', fontSize:24, fontWeight:'bold'}}>
+                        My Music
+                    </Text>
+                </View>
             </View>
        
-        
-        
-        <MyDownloads/>
-        <MyFavs/>
-        <MyLibrary/>
+{/*--------------------------------------------Downloads----------------------------------------------------------- */}
+        <TouchableOpacity>
+            <View style = {styles.download}>
+
+                <View style = {{width:'90%', alignItems:'center', flexDirection:'row'}}>
+
+                     <AntDesign name="playcircleo" size={24} color="black" />
+
+                    <View>
+                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold'}}>
+                            My Downloads
+                        </Text>
+
+                        <Text style = {{paddingLeft:30, fontSize:15}}>
+                            9 songs
+                        </Text>
+                    </View>
+
+                </View>
+                
+                <View style = {{width:'10%'}}>
+                 <AntDesign name="right" size={24} color="black" />
+                </View>
+
+            </View>
+        </TouchableOpacity>
+
+{/*---------------------------------------------My Favourites------------------------------------------------------------ */}
+       
+        <TouchableOpacity>
+            <View style = {styles.download}>
+
+                <View style = {{width:'90%', alignItems:'center', flexDirection:'row'}}>
+
+                    <AntDesign name="playcircleo" size={24} color="black" />
+
+                    <View>
+                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold'}}>
+                            My Favourites
+                        </Text>
+
+                        <Text style = {{paddingLeft:30, fontSize:15}}>
+                            15 songs
+                        </Text>
+                    </View>
+
+                </View>
+
+                <View style = {{width:'10%'}}>
+                    <AntDesign name="right" size={24} color="black" />
+                </View>
+
+            </View>
+        </TouchableOpacity>
+{/*---------------------------------------------My Library------------------------------------------------------------ */}
+        <TouchableOpacity>
+            <View style = {styles.download}>
+
+                <View style = {{width:'90%', alignItems:'center', flexDirection:'row'}}>
+
+                    <AntDesign name="playcircleo" size={24} color="black" />
+
+                    <View>
+                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold'}}>
+                            My Favourites
+                        </Text>
+
+                        <Text style = {{paddingLeft:30, fontSize:15}}>
+                            30 songs
+                        </Text>
+                    </View>
+
+                </View>
+
+                <View style = {{width:'10%'}}>
+                    <AntDesign name="right" size={24} color="black" />
+                </View>
+
+            </View>
+        </TouchableOpacity>
+
+{/*------------------------------------------------------End----------------------------------------------------------- */}      
    
         </View>
-       
         
-   
-   
-    
     )
 }
 
@@ -49,11 +120,21 @@ const styles = StyleSheet.create({
         backgroundColor:'black'
     },
     header:{
-        backgroundColor:'black',
+        backgroundColor:'#066EF5',
         height:50,
         alignItems:'center',
-        flexDirection:'row'   
+        flexDirection:'row',
+        width:'100%' ,
+        justifyContent:'center',
+        marginBottom:20 
     },
+
+    download:{
+        backgroundColor:'grey',
+        flexDirection:'row',
+        alignItems:'center',
+        borderBottomWidth:2
+    }
 
     
 

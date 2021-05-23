@@ -8,7 +8,8 @@ import { Feather , MaterialIcons} from '@expo/vector-icons';
 const Account = (props) => {
     return (
         <View style = {styles.container}>
-            {/*---------------------------------Header------------------------------------------- */}
+{/*---------------------------------------------------------------Header------------------------------------------- */}
+          
            <View style = {styles.header}>
                 <View style = {{width:'10%'}}>
                     <TouchableOpacity onPress = {() => props.navigation.openDrawer()}>
@@ -26,14 +27,16 @@ const Account = (props) => {
                    
                 </View>
             </View>
-    {/*--------------------------------------------Source------------------------------------- */}
+
+{/*--------------------------------------------------------Profile Image----------------------------------------------------- */}
+        
         <ImageBackground source = {{uri :'https://i.pinimg.com/originals/75/51/e5/7551e5bde057bdc8707baf5bb63d2550.jpg'}}
-        style = {{width:200, height:200, marginTop:20, marginBottom:20}} imageStyle = {{borderRadius:300}}  >
+             style = {{width:200, height:200, marginTop:20, marginBottom:20}} imageStyle = {{borderRadius:300}}  >
             <FontAwesome name = 'camera' size ={30} color = 'grey' style ={{position:'absolute', top:155, left:155}} />
         </ImageBackground>
 
-        
-    {/*-------------------------------------------Real name------------------------------------- */}
+{/*------------------------------------------------------------Real name------------------------------------------------ */}
+       
         <ScrollView style = {{width:'100%'}} contentContainerStyle = {{alignItems:'center'}}>
         <View style={styles.userinfo}>
         <View style = {{width:'90%'}}>
@@ -50,56 +53,67 @@ const Account = (props) => {
           <MaterialIcons name="edit" size={30} color="black" />
         </View>
       </View>
-        {/*-------------------------------------------Username---------------------------------------- */}
+
+{/*------------------------------------------------------Username--------------------------------------------------------- */}
+        
         <View style={styles.userinfo}>
-        <View style = {{width:'90%'}}>
-          <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
-            Username
-          </Text>
-          <TextInput
-            placeholder="tanya__1019"
-            placeholderTextColor="#066EF5"
-            style={styles.userinput}
-          />
-        </View>
-        <View style = {{width:'10%', justifyContent:'flex-end', paddingBottom:8}}>
-          <MaterialIcons name="edit" size={30} color="black" />
-        </View>
+          <View style = {{width:'90%'}}>
+              <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
+                Username
+              </Text>
+
+              <TextInput
+                placeholder="tanya__1019"
+                placeholderTextColor="#066EF5"
+                style={styles.userinput}
+              />
+
+          </View>
+
+          <View style = {{width:'10%', justifyContent:'flex-end', paddingBottom:8}}>
+             <MaterialIcons name="edit" size={30} color="black" />
+          </View>
       </View>
 
-      {/*---------------------------------------------Email----------------------------------------------- */}
+{/*------------------------------------------------------------Email---------------------------------------------------- */}
       <View style={styles.userinfo}>
-        <View style = {{width:'90%'}}>
-          <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
-            Email
-          </Text>
-          <TextInput
-            placeholder="tanya@gmail.com"
-            placeholderTextColor="#066EF5"
-            style={styles.userinput}
-          />
-        </View>
-        <View style = {{width:'10%', justifyContent:'flex-end', paddingBottom:8}}>
-          <MaterialIcons name="edit" size={30} color="black" />
-        </View>
+          <View style = {{width:'90%'}}>
+            <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
+              Email
+            </Text>
+            <TextInput
+              placeholder="tanya@gmail.com"
+              placeholderTextColor="#066EF5"
+              style={styles.userinput}
+            />
+          </View>
+
+          <View style = {{width:'10%', justifyContent:'flex-end', paddingBottom:8}}>
+            <MaterialIcons name="edit" size={30} color="black" />
+          </View>
+          
       </View>
 
-    {/*-----------------------------------------Contact Number----------------------------------- */}
+{/*-------------------------------------------------------Contact Number----------------------------------------------------- */}
+    
     <View style={styles.userinfo}>
         <View style = {{width:'90%'}}>
-          <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
-            Contact Info
-          </Text>
-          <TextInput
-            placeholder="123456789"
-            placeholderTextColor="#066EF5"
-            style={styles.userinput}
-          />
+            <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
+              Contact Info
+            </Text>
+            <TextInput
+              placeholder="123456789"
+              placeholderTextColor="#066EF5"
+              style={styles.userinput}
+            />
         </View>
+
         <View style = {{width:'10%', justifyContent:'flex-end', paddingBottom:8}}>
-          <MaterialIcons name="edit" size={30} color="black" />
+            <MaterialIcons name="edit" size={30} color="black" />
         </View>
-      </View>
+
+    </View>
+
         <View style = {styles.signout}>
             <TouchableOpacity onPress = {() => props.navigation.navigate('Login')}>
                 <Text style = {{color:'white', fontSize:20}}>
@@ -107,6 +121,9 @@ const Account = (props) => {
                 </Text>
             </TouchableOpacity>
         </View>
+
+{/*-----------------------------------------------------------------end-------------------------------------------------------- */}
+   
     </ScrollView>
   </View>
             

@@ -8,8 +8,6 @@ const MusicList = ({Music, Detail}) => {
     return (
         <View style = {styles.container}>
             
-            
-
             <View style = {{width:'70%'}}>
                 <Text style = {{fontWeight:'bold', fontSize:20, color:'white'}}>
                     {Music}
@@ -19,10 +17,7 @@ const MusicList = ({Music, Detail}) => {
                     {Detail}
                 </Text>
             </View>
-            
-            
-            
-
+    
         </View>
     )
 }

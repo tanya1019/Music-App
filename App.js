@@ -22,11 +22,16 @@ import DownloadQuality from './Settings/DownloadQuality';
 import Eqalizer from './Settings/Eqalizer';
 import StreamingQuality from './Settings/StreamingQuality';
 import Navigation from './Settings/Navigation';
+import CustomerSupport from './Settings/HelpAndSupport/CustomerSupport';
+import Updates from './Settings/HelpAndSupport/Updates';
 
 
 const Stack = createStackNavigator();
 export default function App(){
   return(
+
+/*---------------------------------------------Navigation container-------------------------------------------------------- */
+
     <NavigationContainer>
       <Stack.Navigator initialRouteName = 'Login'>
         <Stack.Screen name = 'Login' component = {Login}
@@ -45,13 +50,17 @@ export default function App(){
         options = {{headerShown:false}}/>
         <Stack.Screen name = 'Navigation' component = {Navigation}
         options = {{headerShown:false}}/>
+        <Stack.Screen name = 'CustomerSupport' component = {CustomerSupport}
+        options = {{headerShown:false}}/>
+        <Stack.Screen name = 'Updates' component = {Updates}
+        options = {{headerShown:false}}/>
         
       </Stack.Navigator>
     </NavigationContainer>
   );
+  }
+/*--------------------------------------------------Tab Navigator-------------------------------------------------------- */
 
-
-}
 const Tab = createMaterialBottomTabNavigator();
 function bottomtab(){
   return (
@@ -88,6 +97,7 @@ function bottomtab(){
   )
 }
 
+/*----------------------------------------------------Drawer section------------------------------------------------------ */
 
 const Dra = createDrawerNavigator();
 function drawer(){
