@@ -30,7 +30,7 @@ const Settings = (props) => {
                     </TouchableOpacity>
             </View>
 
-            <View style = {{ width : '80%',justifyContent:'center', alignItems: 'center', marginBottom:30}}>
+            <View style = {{ width : '80%',justifyContent:'center', alignItems: 'center', marginBottom:20}}>
                 <Text style = {{color:'#066EF5', fontSize:24, fontWeight:'bold'}}>
                     Settings
                 </Text>
@@ -41,7 +41,7 @@ const Settings = (props) => {
             
             <ScrollView style = {{width:'100%'}}>
             <View>
-                <Text style = {{color:'white', fontSize:18, fontWeight:'bold'}}>
+                <Text style = {{color:'white', fontSize:20, fontWeight:'bold', marginBottom:10}}>
                     Language Settings
                 </Text>
             </View>
@@ -56,14 +56,14 @@ const Settings = (props) => {
                         </Text>
                     </View>
                     <View style = {{alignItems:'flex-end', width:'20%', justifyContent:'center', paddingRight:10}}>
-                        <FontAwesome5 name="language" size={24} color="black" />
+                        <FontAwesome5 name="language" size={26} color="grey" />
                     </View>  
                 </View>
            </TouchableOpacity>
 
 {/*-----------------------------------------------Music Quality Header---------------------------------------------- */}
           
-            <Text style = {{color:'white', fontSize:18, fontWeight:'bold', marginTop:30}}>
+            <Text style = {{color:'white', fontSize:20, fontWeight:'bold', marginTop:10, marginBottom:10}}>
                 Music Quality
             </Text>
 
@@ -78,7 +78,7 @@ const Settings = (props) => {
                <View style = {{flexDirection:'row', width:'20%', alignItems:'center', justifyContent:'center', paddingRight:40}}>
 
                <TouchableOpacity>
-               <MaterialCommunityIcons name="quality-high" size={36} color="black" />
+               <MaterialCommunityIcons name="quality-high" size={36} color="grey" />
                </TouchableOpacity>
 
                <TouchableOpacity>
@@ -86,7 +86,7 @@ const Settings = (props) => {
                </TouchableOpacity>
 
                <TouchableOpacity>
-               <MaterialCommunityIcons name="quality-high" size={36} color="black" />
+               <MaterialCommunityIcons name="quality-high" size={36} color="grey" />
                </TouchableOpacity>
 
                </View>
@@ -108,11 +108,11 @@ const Settings = (props) => {
                </TouchableOpacity>
 
                <TouchableOpacity>
-               <MaterialCommunityIcons name="quality-high" size={36} color="black" />
+               <MaterialCommunityIcons name="quality-high" size={36} color="grey" />
                </TouchableOpacity>
 
                <TouchableOpacity>
-               <MaterialCommunityIcons name="quality-high" size={36} color="black" />
+               <MaterialCommunityIcons name="quality-high" size={36} color="grey" />
                </TouchableOpacity>
 
                </View>
@@ -128,8 +128,8 @@ const Settings = (props) => {
                     </Text>
                </View>
 
-               <View  style = {{alignItems:'flex-end', width:'10%', justifyContent:'center', paddingRight:10}}>
-                    <MaterialIcons name="equalizer" size={24} color="black" />
+               <View  style = {{alignItems:'flex-end', width:'10%', justifyContent:'center', paddingRight:20}}>
+                    <MaterialIcons name="equalizer" size={24} color="grey" />
                </View>
 
            </View>
@@ -137,9 +137,9 @@ const Settings = (props) => {
 
 {/*----------------------------------------------------------Data Usage------------------------------------------------------ */}
             
-             <View style = {{flexDirection:'row', alignItems:"center"}} >
+             <View style = {{ flexDirection:'row', marginTop:10, marginBottom:10, alignItems:'center' }}>
                  
-                <Text style = {styles.text}>
+                <Text style = {{color:'white', fontSize:20}}>
                     Data Usage
                 </Text>
 
@@ -158,7 +158,7 @@ const Settings = (props) => {
                         Data saver
                     </Text>
 
-                    <Text style ={{color:'black', fontSize:14 }}>
+                    <Text style ={{color:'grey', fontSize:14 }}>
                         Sets your music quality to low and disables artist canvases
                     </Text>
                </View>
@@ -198,9 +198,11 @@ const Settings = (props) => {
 
 {/*-----------------------------------------------Connect to Apps--------------------------------------------------- */}
            
-            <Text style = {styles.text}>
-                Connect to apps
-            </Text>
+            <View>
+                <Text style = {{color:'white', fontSize:20, fontWeight:'bold', marginBottom:10, marginTop:10}}>
+                    Connect
+                </Text>
+            </View>
 
 {/*---------------------------------------------------Navigation---------------------------------------------------- */}
           
@@ -211,13 +213,13 @@ const Settings = (props) => {
                                 Navigation
                             </Text>
 
-                            <Text style ={{color:'black', fontSize:14 }}>
+                            <Text style ={{color:'grey', fontSize:14 }}>
                                 Connect to navigation apps
                             </Text>
                         </View> 
                     
                     <View style = {{alignItems:'flex-end', width:'20%', justifyContent:'center', paddingRight:20}}>
-                        <Feather name="navigation" size={24} color="black" />
+                        <Feather name="navigation" size={24} color="grey" />
                     </View>
 
                 </View>
@@ -232,7 +234,7 @@ const Settings = (props) => {
                 Car Mode
             </Text>
 
-            <Text style ={{color:'black', fontSize:14 }}>
+            <Text style ={{color:'grey', fontSize:14 }}>
                Turns on your Auto Play
             </Text>
         </View>
@@ -257,7 +259,7 @@ const Settings = (props) => {
                         Sleep Mode
                     </Text>
 
-                    <Text style ={{color:'black', fontSize:14 }}>
+                    <Text style ={{color:'grey', fontSize:14 }}>
                         Set timer for your music
                     </Text>
                 </View>
@@ -270,7 +272,7 @@ const Settings = (props) => {
                     onValueChange={toggleSwitch}
                     value={isEnabled}
                     />
-                    <Text style = {{color:'black'}}>
+                    <Text style = {{color:'#066EF5', paddingRight:5}}>
                         10 min
                     </Text>
                 </View>
@@ -278,10 +280,11 @@ const Settings = (props) => {
                 </TouchableOpacity>
 {/*-----------------------------------------------------Help and support--------------------------------- */}
 
-        <Text>
-            Help and support
-        </Text>
-
+            <View>
+                <Text style = {{color:'white', fontSize:18, fontWeight:'bold', marginTop:10, marginBottom:10}}>
+                   Help And Support
+                </Text>
+            </View>
 {/*--------------------------------------------------Customer Support-------------------------------------- */}
         <TouchableOpacity onPress = {() => props.navigation.navigate('CustomerSupport')}>
            <View style = {styles.list}>
@@ -292,7 +295,7 @@ const Settings = (props) => {
                </View>
 
                <View  style = {{alignItems:'flex-end', width:'10%', justifyContent:'center', paddingRight:10}}>
-               <AntDesign name="customerservice" size={24} color="black" />
+               <AntDesign name="customerservice" size={28} color="grey" />
                </View>
 
            </View>
@@ -311,7 +314,7 @@ const Settings = (props) => {
                </View>
 
                <View  style = {{alignItems:'flex-end', width:'10%', justifyContent:'center', paddingRight:10}}>
-                    <MaterialIcons name="update" size={24} color="black" />
+                    <MaterialIcons name="update" size={28} color="grey" />
                </View>
            </View>
         </TouchableOpacity>
@@ -344,11 +347,12 @@ const styles = StyleSheet.create({
     list:{
         height:60,
         width:'100%', 
-        backgroundColor:'grey',
+        backgroundColor:'#222831',
         flexDirection:'row',
         borderBottomWidth:2, 
         paddingLeft:10,
-        alignItems:'center'
+        alignItems:'center',
+        
     }
     
 })

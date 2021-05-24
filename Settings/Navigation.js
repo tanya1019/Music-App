@@ -69,7 +69,7 @@ const Navigation = (props) => {
           <View style = {{flexDirection:'row', alignItems:'center'}}>
             <Image style = {styles.image} 
             source = {require('../assets/google.jpeg')}/>
-            <Text style = {{fontSize:20, fontWeight:'bold', color:'white'}}>
+            <Text style = {{fontSize:20, fontWeight:'bold', color:'white', textAlign:'center'}}>
                 Google Maps
             </Text>
             </View>
@@ -103,7 +103,7 @@ const Navigation = (props) => {
           </View>
 
             <Text  style = {{fontSize:15, color:'white', textAlign:'center'}}>
-               Control your music while navigation
+               Control your music while navigating
             </Text>
           
           <View style = {{width:'100%', alignItems:'center'}}>
@@ -111,7 +111,7 @@ const Navigation = (props) => {
             <View style = {styles.connect}>
                 <TouchableOpacity>
                   <Text style = {{fontWeight:'600', color:'white', fontSize:15}}>
-                    Connect
+                    Get App
                   </Text>
                 </TouchableOpacity>
             </View>

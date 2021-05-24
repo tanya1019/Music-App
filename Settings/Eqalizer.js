@@ -16,7 +16,7 @@ const Equalizer = (props) => {
 
         <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
           <TouchableOpacity onPress={() => props.navigation.navigate("Settings")} >
-            <Ionicons name="chevron-back" size={30} color="black" />
+            <Ionicons name="chevron-back" size={30} color="#066EF5" />
           </TouchableOpacity>
         </View>
 
@@ -37,7 +37,7 @@ const Equalizer = (props) => {
           status={checked === "first" ? "checked" : "unchecked"}
           onPress={() => setChecked("first")}
           uncheckedColor="white"
-          color="blue"
+          color="#066EF5"
         />
 
         <Text style={styles.optionname}>
@@ -51,7 +51,7 @@ const Equalizer = (props) => {
           status={checked === "second" ? "checked" : "unchecked"}
           onPress={() => setChecked("second")}
           uncheckedColor="white"
-          color="blue"
+          color="#066EF5"
         />
         <Text style={styles.optionname}>
           Pop
@@ -64,7 +64,7 @@ const Equalizer = (props) => {
           status={checked === "third" ? "checked" : "unchecked"}
           onPress={() => setChecked("third")}
           uncheckedColor="white"
-          color="blue"
+          color="#066EF5"
         />
         <Text style={styles.optionname}>
           Classic
@@ -77,7 +77,7 @@ const Equalizer = (props) => {
           status={checked === "fourth" ? "checked" : "unchecked"}
           onPress={() => setChecked("fourth")}
           uncheckedColor="white"
-          color="blue"
+          color="#066EF5"
         />
         <Text style={styles.optionname}>
           Jazz
@@ -90,7 +90,7 @@ const Equalizer = (props) => {
           status={checked === "fifth" ? "checked" : "unchecked"}
           onPress={() => setChecked("fifth")}
           uncheckedColor="white"
-          color="blue"
+          color="#066EF5"
         />
         <Text style={styles.optionname}>
           Rock
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     paddingTop:40
   },
   header: {
-    backgroundColor: "blue",
+    backgroundColor: "black",
     width: "100%",
     height: 60,
     flexDirection: "row",
@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
   headertext: {
     fontSize: 22,
     fontWeight: "bold",
+    color:'#066EF5'
   },
   option: {
     width: "100%",

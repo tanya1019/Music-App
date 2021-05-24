@@ -12,7 +12,7 @@ const LanguagePref = (props) => {
 
         <View style={{ width: "10%", justifyContent: "center", paddingLeft:5 }}>
           <TouchableOpacity onPress={() => props.navigation.navigate("Settings")}>
-            <Ionicons name="chevron-back" size={30} color="black" />
+            <Ionicons name="chevron-back" size={30} color="#066EF5" />
           </TouchableOpacity>
         </View>
 
@@ -146,27 +146,32 @@ const styles = StyleSheet.create({
         backgroundColor: "black",
         paddingTop:40
       },
+      
       header: {
-        backgroundColor: "yellow",
+        backgroundColor: "black",
         width: "100%",
         height: 60,
         flexDirection: "row",
+        marginBottom:10
       },
+
       headertext: {
         fontSize: 22,
         fontWeight: "bold",
-        color:'black'
+        color:'#066EF5'
       },
 
       lang:{
           width:'100%',
           height:40,
-          backgroundColor:'black',
-          justifyContent:'center'
+          backgroundColor:'#222831',
+          justifyContent:'center',
+          alignItems:'center',
+          borderBottomWidth:1
       },
 
       langtext:{
-          fontSize:18,
+          fontSize:24,
           color:'white',
           fontWeight:'600'
       }
