@@ -20,6 +20,7 @@ const LanguagePref = (props) => {
           <Text style={styles.headertext}>
               Set Language
           </Text>
+         
         </View>
 
         <View style={{ width: "10%" }}></View>
@@ -28,7 +29,7 @@ const LanguagePref = (props) => {
 
 {/*--------------------------------------------ScrollView----------------------------------------------------------- */}
 
-      <ScrollView style = {{width:'100%'}}>
+      <ScrollView style = {{width:'100%'}} contentContainerStyle = {{alignItems:'center'}}>
 
 {/*--------------------------------------------Language Names----------------------------------------------------------- */}
           <View style = {styles.lang}>
@@ -162,12 +163,13 @@ const styles = StyleSheet.create({
       },
 
       lang:{
-          width:'100%',
+          width:'90%',
           height:40,
           backgroundColor:'#222831',
           justifyContent:'center',
           alignItems:'center',
-          borderBottomWidth:1
+          borderBottomWidth:1,
+          borderRadius:20
       },
 
       langtext:{

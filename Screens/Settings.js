@@ -54,6 +54,9 @@ const Settings = (props) => {
                         <Text style = {styles.text}>
                             Language Preference
                         </Text>
+                        <Text style ={{color:'grey', fontSize:14 }}>
+                            Set your language
+                         </Text>
                     </View>
                     <View style = {{alignItems:'flex-end', width:'20%', justifyContent:'center', paddingRight:10}}>
                         <FontAwesome5 name="language" size={26} color="grey" />
@@ -74,6 +77,9 @@ const Settings = (props) => {
                <Text style = {styles.text}>
                    Download Quality
                </Text>
+               <Text style ={{color:'grey', fontSize:14 }}>
+                     Set your download quality
+                </Text>
                </View>
                <View style = {{flexDirection:'row', width:'20%', alignItems:'center', justifyContent:'center', paddingRight:40}}>
 
@@ -99,6 +105,9 @@ const Settings = (props) => {
                <Text style = {styles.text}>
                    Streaming Quality
                </Text>
+               <Text style ={{color:'grey', fontSize:14 }}>
+                     Set your straming quality
+                 </Text>
             </View>
 
             <View style = {{flexDirection:'row', width:'30%', alignItems:'center', justifyContent:'center'}}>
@@ -125,6 +134,9 @@ const Settings = (props) => {
                <View style = {{width:'90%',justifyContent:'center', alignItems:'flex-start'}}>
                     <Text style = {styles.text}>
                         Equalizer
+                    </Text>
+                    <Text style ={{color:'grey', fontSize:14 }}>
+                        Manipulate frequency
                     </Text>
                </View>
 
@@ -181,6 +193,9 @@ const Settings = (props) => {
                <View style = {{justifyContent:'center', width:'80%'}}>
                     <Text style = {styles.text}>
                         Data usage warning
+                    </Text>
+                    <Text style ={{color:'grey', fontSize:14 }}>
+                        Warns about excess data usage
                     </Text>
                </View>
 
@@ -292,6 +307,9 @@ const Settings = (props) => {
                     <Text style = {styles.text}>
                         Customer Support
                     </Text>
+                    <Text style ={{color:'grey', fontSize:14 }}>
+                         Contact us
+                    </Text>
                </View>
 
                <View  style = {{alignItems:'flex-end', width:'10%', justifyContent:'center', paddingRight:10}}>
@@ -310,6 +328,9 @@ const Settings = (props) => {
                <View style = {{width:'90%',justifyContent:'center', alignItems:'flex-start'}}>
                     <Text style = {styles.text}>
                         Updates
+                    </Text>
+                    <Text style ={{color:'grey', fontSize:14 }}>
+                         Check for updates
                     </Text>
                </View>
 
@@ -345,9 +366,9 @@ const styles = StyleSheet.create({
     },
 
     list:{
-        height:60,
+        height:65,
         width:'100%', 
-        backgroundColor:'#222831',
+        backgroundColor:'#111111',
         flexDirection:'row',
         borderBottomWidth:2, 
         paddingLeft:10,

@@ -17,13 +17,13 @@ const Navigation = (props) => {
 
         <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }} >
           <TouchableOpacity onPress={() => props.navigation.navigate("Settings")}>
-            <Ionicons name="chevron-back" size={30} color="black" />
+            <Ionicons name="chevron-back" size={30} color="#066EF5" />
           </TouchableOpacity>
         </View>
 
         <View style={{ width: "80%", alignItems: "center", justifyContent: "center" }} >
           <Text style={styles.headertext}>
-            Connect to apps
+            Connect to Apps
           </Text>
         </View>
 
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
       },
 
       header: {
-        backgroundColor: "blue",
+        backgroundColor: "black",
         width: "100%",
         height: 60,
         flexDirection: "row",
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
       headertext: {
         fontSize: 22,
         fontWeight: "bold",
+        color:'#066EF5'
       },
 
       heading:{
@@ -155,8 +156,8 @@ const styles = StyleSheet.create({
       },
 
       caption:{
-          fontSize:15,
-          color:'blue',
+          fontSize:18,
+          color:'grey',
           textAlign:'center',
           marginTop:20,
           color:'white'

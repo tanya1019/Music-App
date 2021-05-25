@@ -1,6 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
 import { Ionicons } from "react-native-vector-icons";
+import MusicList from '../CustomList/MusicList'
 
 const MyLibrary = (props) => {
     return (
@@ -11,7 +12,7 @@ const MyLibrary = (props) => {
             
                     <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
                         <TouchableOpacity onPress={() => props.navigation.navigate("Home")} >
-                            <Ionicons name="chevron-back" size={30} color="black" />
+                            <Ionicons name="chevron-back" size={30} color="#066EF5" />
                         </TouchableOpacity>
                     </View>
             
@@ -26,6 +27,20 @@ const MyLibrary = (props) => {
             </View>
 
 {/*------------------------------------Header-----------------------------------*/}
+
+<ScrollView style={{flex:1, width: "100%" }}>
+          <MusicList Music="Dil mere" Detail="Local train" />
+          <MusicList
+            Music="Dusk till down"
+            Detail="Zyan"
+            albumUrl="https://i1.sndcdn.com/artworks-000405545727-arfwqx-t500x500.jpg"
+          />
+          <MusicList Music="Treat you better" Detail="Zyan" />
+          <MusicList Music="Zindagi" Detail="Jubin Nautiyal" />
+          <MusicList Music="Channa mereya" Detail="Detail:ABC" />
+          <MusicList Music="Tum mile" Detail="Unknown" />
+      </ScrollView>
+
         </View>
     )
 }
@@ -39,7 +54,7 @@ const styles = StyleSheet.create({
         paddingTop:40
       },
       header: {
-        backgroundColor: "blue",
+        backgroundColor: "black",
         width: "100%",
         height: 60,
         flexDirection: "row",
@@ -47,5 +62,6 @@ const styles = StyleSheet.create({
       headertext: {
         fontSize: 22,
         fontWeight: "bold",
+        color:'#066EF5'
       },
 })

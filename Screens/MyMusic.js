@@ -14,13 +14,23 @@ const MyMusic = (props) => {
 
 {/*--------------------------------------------Header----------------------------------------------------------- */}
 
-            <View style = {styles.header}>
-                <View style = {{ width : '80%',justifyContent:'center', alignItems: 'center'}}>
-                    <Text style = {{color:'black', fontSize:24, fontWeight:'bold'}}>
-                        My Music
-                    </Text>
-                </View>
+        <View style={styles.header}>
+
+            <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
+                <TouchableOpacity onPress={() => props.navigation.navigate("Settings")} >
+                    <Ionicons name="chevron-back" size={30} color="#066EF5" />
+                </TouchableOpacity>
             </View>
+
+            <View style={{ width: "80%", alignItems: "center", justifyContent: "center" }}>
+                <Text style={styles.headertext}>
+                    My Music
+                </Text>
+            </View>
+
+            <View style={{ width: "10%" }}></View>
+
+        </View>
        
 {/*--------------------------------------------Downloads----------------------------------------------------------- */}
         <TouchableOpacity onPress = {() => props.navigation.navigate('MyDownloads') }>
@@ -28,14 +38,16 @@ const MyMusic = (props) => {
 
                 <View style = {{width:'90%', alignItems:'center', flexDirection:'row'}}>
 
-                     <AntDesign name="playcircleo" size={24} color="black" />
-
+                    <View style = {{paddingLeft:5}}>
+                        <AntDesign name="playcircleo" size={24} color="#066EF5" />
+                    </View>
+                     
                     <View>
-                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold'}}>
+                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold', color:'#066EF5'}}>
                             My Downloads
                         </Text>
 
-                        <Text style = {{paddingLeft:30, fontSize:15}}>
+                        <Text style = {{paddingLeft:30, fontSize:15, color:'grey'}}>
                             9 songs
                         </Text>
                     </View>
@@ -43,7 +55,7 @@ const MyMusic = (props) => {
                 </View>
                 
                 <View style = {{width:'10%'}}>
-                 <AntDesign name="right" size={24} color="black" />
+                 <AntDesign name="right" size={24} color="#066EF5" />
                 </View>
 
             </View>
@@ -56,14 +68,16 @@ const MyMusic = (props) => {
 
                 <View style = {{width:'90%', alignItems:'center', flexDirection:'row'}}>
 
-                    <AntDesign name="playcircleo" size={24} color="black" />
+                     <View style = {{paddingLeft:5}}>
+                        <AntDesign name="playcircleo" size={24} color="#066EF5" />
+                    </View>
 
                     <View>
-                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold'}}>
+                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold', color:'#066EF5'}}>
                             My Favourites
                         </Text>
 
-                        <Text style = {{paddingLeft:30, fontSize:15}}>
+                        <Text style = {{paddingLeft:30, fontSize:15, color:'grey'}}>
                             15 songs
                         </Text>
                     </View>
@@ -71,7 +85,7 @@ const MyMusic = (props) => {
                 </View>
 
                 <View style = {{width:'10%'}}>
-                    <AntDesign name="right" size={24} color="black" />
+                    <AntDesign name="right" size={24} color="#066EF5" />
                 </View>
 
             </View>
@@ -82,14 +96,16 @@ const MyMusic = (props) => {
 
                 <View style = {{width:'90%', alignItems:'center', flexDirection:'row'}}>
 
-                    <AntDesign name="playcircleo" size={24} color="black" />
+                    <View style = {{paddingLeft:5}}>
+                        <AntDesign name="playcircleo" size={24} color="#066EF5" />
+                    </View>
 
                     <View>
-                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold'}}>
-                            My Favourites
+                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold', color:'#066EF5'}}>
+                            My Library
                         </Text>
 
-                        <Text style = {{paddingLeft:30, fontSize:15}}>
+                        <Text style = {{paddingLeft:30, fontSize:15, color:'grey'}}>
                             30 songs
                         </Text>
                     </View>
@@ -97,7 +113,7 @@ const MyMusic = (props) => {
                 </View>
 
                 <View style = {{width:'10%'}}>
-                    <AntDesign name="right" size={24} color="black" />
+                    <AntDesign name="right" size={24} color="#066EF5" />
                 </View>
 
             </View>
@@ -120,7 +136,7 @@ const styles = StyleSheet.create({
         backgroundColor:'black'
     },
     header:{
-        backgroundColor:'#066EF5',
+        backgroundColor:'black',
         height:50,
         alignItems:'center',
         flexDirection:'row',
@@ -128,12 +144,18 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         marginBottom:20 
     },
+    headertext: {
+        fontSize: 22,
+        fontWeight: "bold",
+        color:'#066EF5'
+      },
 
     download:{
-        backgroundColor:'grey',
+        backgroundColor:'#111111',
         flexDirection:'row',
         alignItems:'center',
-        borderBottomWidth:2
+        borderBottomWidth:2,
+        height:60
     }
 
     
