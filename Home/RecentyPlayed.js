@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ImageBackground } from "react-native";
+import { ImageBackground, TouchableOpacity } from "react-native";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
@@ -59,6 +59,7 @@ export class RecentlyPlayed extends Component {
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
+              <TouchableOpacity>
               <Surface style={styles.surface}>
                 <ImageBackground
                   style={{ width: 120, height: 120, borderRadius: 10, justifyContent:'flex-end', padding:7 }}
@@ -72,6 +73,7 @@ export class RecentlyPlayed extends Component {
                   {item.name}
                 </Text>
               </Surface>
+              </TouchableOpacity>
             );
           }}
         />

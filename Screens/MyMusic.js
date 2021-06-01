@@ -17,7 +17,7 @@ const MyMusic = (props) => {
         <View style={styles.header}>
 
             <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
-                <TouchableOpacity onPress={() => props.navigation.navigate("Settings")} >
+                <TouchableOpacity onPress={() => props.navigation.navigate("Home")} >
                     <Ionicons name="chevron-back" size={30} color="#066EF5" />
                 </TouchableOpacity>
             </View>

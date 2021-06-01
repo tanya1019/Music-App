@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
-import { Ionicons } from "react-native-vector-icons";
+import { Ionicons, FontAwesome } from "react-native-vector-icons";
 import MusicList from '../CustomList/MusicList'
 
 const MyLibrary = (props) => {
@@ -22,23 +22,38 @@ const MyLibrary = (props) => {
                         </Text>
                     </View>
         
-                <View style={{ width: "10%" }}></View>
+                <View style={{ width: "10%", alignItems: "center", justifyContent: "center" }}>
+                <FontAwesome name="search" size={24} color="#066EF5" />
+                </View>
         
             </View>
 
 {/*------------------------------------Header-----------------------------------*/}
 
 <ScrollView style={{flex:1, width: "100%" }}>
+          <TouchableOpacity>
           <MusicList Music="Dil mere" Detail="Local train" />
-          <MusicList
-            Music="Dusk till down"
-            Detail="Zyan"
-            albumUrl="https://i1.sndcdn.com/artworks-000405545727-arfwqx-t500x500.jpg"
-          />
+          </TouchableOpacity>
+            
+          <TouchableOpacity>
+          <MusicList Music="Dusk till down" Detail="Zyan" />
+          </TouchableOpacity>
+
+          <TouchableOpacity>
           <MusicList Music="Treat you better" Detail="Zyan" />
+          </TouchableOpacity>
+
+          <TouchableOpacity>
           <MusicList Music="Zindagi" Detail="Jubin Nautiyal" />
+          </TouchableOpacity>
+
+          <TouchableOpacity>
           <MusicList Music="Channa mereya" Detail="Detail:ABC" />
+          </TouchableOpacity>
+
+          <TouchableOpacity>
           <MusicList Music="Tum mile" Detail="Unknown" />
+          </TouchableOpacity>
       </ScrollView>
 
         </View>
