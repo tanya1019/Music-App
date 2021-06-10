@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
+import CarouselPodcast from '../CustomList/CarouselPodcast';
 
 const Podcast = (props) => {
     return (
@@ -24,6 +25,8 @@ const Podcast = (props) => {
             <View style={{ width: "10%" }}></View>
 
             </View>
+
+            <CarouselPodcast/>
 
     </View>
     )

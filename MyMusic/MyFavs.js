@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View , TouchableOpacity, ScrollView} from 'react-native'
 import { Ionicons , FontAwesome} from "react-native-vector-icons";
+import FavList from '../CustomList/FavList';
 import MusicList from '../CustomList/MusicList'
 
 const MyFavs = (props) => {
@@ -27,8 +28,8 @@ const MyFavs = (props) => {
         
             </View>
  {/*------------------------------------Header-----------------------------------*/}
-
- <ScrollView style={{flex:1, width: "100%" }}>
+      <FavList navigation = {props.navigation}/>
+ {/* <ScrollView style={{flex:1, width: "100%" }}>
 
         <TouchableOpacity>
           <MusicList Music="Dil mere" Detail="Local train" />
@@ -54,7 +55,7 @@ const MyFavs = (props) => {
           <MusicList Music="Tum mile" Detail="Unknown" />
           </TouchableOpacity>
           
-      </ScrollView>
+    </ScrollView> */}
 
                 </View>
     )

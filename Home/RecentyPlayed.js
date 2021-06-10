@@ -4,13 +4,10 @@ import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
 import { AntDesign } from '@expo/vector-icons';
+import { useState } from "react";
 
-export class RecentlyPlayed extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    let categories = [
+export default function RecentlyPlayed (){
+   const[songname , setSongname]= useState ( [
       {
         name: "Shake it off",
         img: {
@@ -46,7 +43,7 @@ export class RecentlyPlayed extends Component {
         },
         id: "5",
       },
-    ];
+    ]);
     return (
       <View style={styles.container}>
         <Text style={{fontSize: 24, fontWeight: "bold",color: "white",paddingLeft: 5,}}>
@@ -55,7 +52,7 @@ export class RecentlyPlayed extends Component {
         <FlatList
          showsHorizontalScrollIndicator = {true}
           keyExtractor={(item) => item.id}
-          data={categories}
+          data={songname}
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
@@ -80,7 +77,7 @@ export class RecentlyPlayed extends Component {
       </View>
     );
   }
-}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -100,4 +97,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RecentlyPlayed;

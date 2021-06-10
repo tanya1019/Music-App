@@ -1,15 +1,12 @@
 import React, { Component } from "react";
+import { useState } from "react";
 import { ImageBackground, TouchableOpacity } from "react-native";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
 
-export class TodaysPick extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    let categories = [
+export default function TodaysPick(){
+    const [songname, setSongname] = useState([
       {
         name: "Shake it off",
         img: {
@@ -45,7 +42,7 @@ export class TodaysPick extends Component {
         },
         id: "5",
       },
-    ];
+    ]);
     return (
       <View style={styles.container}>
         <Text
@@ -61,7 +58,7 @@ export class TodaysPick extends Component {
         <FlatList
          showsHorizontalScrollIndicator = {true}
           keyExtractor={(item) => item.id}
-          data={categories}
+          data={songname}
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
@@ -84,7 +81,7 @@ export class TodaysPick extends Component {
       </View>
     );
   }
-}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -104,4 +101,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TodaysPick;

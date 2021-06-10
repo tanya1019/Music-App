@@ -1,15 +1,12 @@
 import React, { Component } from "react";
+import { useState } from "react";
 import { ImageBackground, TouchableOpacity } from "react-native";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
 
-export class Trending extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    let categories = [
+export default function Trending (props){
+    const [songname, setSongname]= useState ([
       {
         name: "Shake it off",
         img: {
@@ -36,6 +33,7 @@ export class Trending extends Component {
         img: {
           uri :'https://i.pinimg.com/236x/9d/8a/a3/9d8aa35626f6561216b1399720ac1512--wedding-songs-taylor-swift-album.jpg'
         },
+        artist : 'Tanya',
         id: "4",
       },
       {
@@ -43,9 +41,11 @@ export class Trending extends Component {
         img: {
           uri :'https://i1.sndcdn.com/artworks-000256017659-fqjbgs-t500x500.jpg'
         },
+         artist : 'Tanya',
         id: "5",
       },
-    ];
+    ]);
+
     return (
       <View style={styles.container}>
         <Text
@@ -61,11 +61,11 @@ export class Trending extends Component {
         <FlatList
          showsHorizontalScrollIndicator = {true}
           keyExtractor={(item) => item.id}
-          data={categories}
+          data={songname}
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity onPress = {() => props.navigation.navigate('MusicPlayer', {item})}>
               <Surface style={styles.surface}>
                 <Image
                   style={{ width: 105, height: 105, borderRadius: 10 }}
@@ -84,7 +84,7 @@ export class Trending extends Component {
       </View>
     );
   }
-}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -104,4 +104,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Trending;
