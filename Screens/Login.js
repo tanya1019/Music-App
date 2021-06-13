@@ -1,28 +1,30 @@
 import { LinearGradient } from 'expo-linear-gradient'
 import React from 'react'
 import { StyleSheet, Text, TextInput, View, Button, ImageBackground, TouchableOpacity } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
 
 const Login = ({navigation}) => {
     return (
         <View style = {styles.container}>
+            <StatusBar style = 'light'/>
             <ImageBackground 
-                blurRadius = {0.5}
-                source = {{uri:"https://i.pinimg.com/originals/d3/96/a9/d396a94e2e55af1dc365ee3047db9ec9.jpg"}}
+                blurRadius = {0.9}
+                source = {{uri:"https://image.freepik.com/free-vector/musical-background-with-colorful-music-notes-waves_53562-1020.jpg"}}
                 style = {styles.image}>
 
-                <TextInput placeholder = 'Enter Email' style = {styles.input1} placeholderTextColor = "#066EF5" />
-                <TextInput placeholder = 'Enter Password' style = {styles.input} placeholderTextColor = "#066EF5"/>
+                <TextInput placeholder = 'Enter Email' style = {styles.input1} placeholderTextColor = "white" />
+                <TextInput placeholder = 'Enter Password' style = {styles.input} placeholderTextColor = "white"/>
 
-                <LinearGradient style = {styles.button} colors = {['blue', '#066EF5' ,'#066EF5', 'blue' , 'blue']} >
+                <View style = {styles.button}>
                 <TouchableOpacity onPress = {() => navigation.navigate('Home')}>
                     <Text style = {{fontWeight:'bold', fontSize:20, color:"white"}}>
                         Login
                     </Text>
                 </TouchableOpacity>
-                </LinearGradient>
+            </View> 
                 
-                <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
-                    <Text style = {{color:'white', fontSize:15 , marginTop:20 , paddingRight:7}}>
+                <View style = {{flexDirection:'row', justifyContent:'center', alignItems:'center', }}>
+                    <Text style = {{color:'#202aa8', fontSize:15 , marginTop:20 , paddingRight:7}}>
                         Don't have an account?
                     </Text>
                 <TouchableOpacity onPress = {() => navigation.navigate('SignUp')} style = {styles.button1}>
@@ -46,22 +48,23 @@ const styles = StyleSheet.create({
     },
 
     input1:{
-        backgroundColor:"white",
+        
         height:40,
         width:300,
-        marginBottom:10,
+        marginTop:100,
         borderRadius:20,
         paddingLeft:10,
-        marginTop:50
+        backgroundColor:'#202aa8'
     },
 
     input:{
-        backgroundColor:"white",
+        backgroundColor:"#202aa8",
         height:40,
         width:300,
-        marginBottom:10,
+        marginBottom:20,
         borderRadius:20,
-        paddingLeft:10
+        paddingLeft:10,
+        marginTop:10
     },
 
     image:{
@@ -69,23 +72,24 @@ const styles = StyleSheet.create({
         height:"100%",
         justifyContent:'center',
         alignItems:"center"
+
     },
     
     button:{
         height:40,
         width:100,
-        backgroundColor:'#066EF5',
+        backgroundColor:'#e92b81',
         justifyContent:'center',
         alignItems:'center',
         borderRadius:20,
-        marginTop:300,
+        marginTop:80
         
     },
 
     button1:{
         height:30,
         width:60,
-        backgroundColor:'#066EF5',
+        backgroundColor:'#e92b81',
         justifyContent:'center',
         alignItems:'center',
         borderRadius:20,

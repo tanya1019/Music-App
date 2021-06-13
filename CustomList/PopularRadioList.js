@@ -1,13 +1,12 @@
 import React, { Component } from "react";
+import { useState } from "react";
 import { ImageBackground, TouchableOpacity } from "react-native";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
-import { AntDesign } from '@expo/vector-icons';
-import { useState } from "react";
 
-export default function RecentlyPlayed (){
-   const[songname , setSongname]= useState ( [
+export default function PopularRadioList(){
+    const [songname, setSongname] = useState([
       {
         name: "Shake it off",
         img: {
@@ -46,34 +45,44 @@ export default function RecentlyPlayed (){
     ]);
     return (
       <View style={styles.container}>
-
-        <Text style={{fontSize: 24, fontWeight: "bold",color: "white",paddingLeft: 5,}}>
-          Today's Pick
+        <Text
+          style={{
+            fontSize: 24,
+            fontWeight: "bold",
+            color: "white",
+            paddingLeft: 15,
+            marginBottom:10
+          }}
+        >
+          Popular Radio
         </Text>
-
         <FlatList
-          showsHorizontalScrollIndicator = {true}
+         showsHorizontalScrollIndicator = {true}
           keyExtractor={(item) => item.id}
           data={songname}
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
-              <TouchableOpacity>
+              
+
               <Surface style={styles.surface}>
-                <ImageBackground
-                  style={{ width: 120, height: 120, borderRadius: 10, justifyContent:'flex-end', padding:7 }}
+
+                <TouchableOpacity style = {{alignItems:'center', justifyContent:'center'}}>
+                  
+                <View style = {{width:105, height:105, backgroundColor:'black', justifyContent:'center', alignItems:'center', borderRadius:200, elevation:20}}>
+                <Image
+                  style={{ width: 100, height: 100, borderRadius: 200 }}
                   source={item.img}
-                  imageStyle = {{borderRadius:10}}
-                >
-                    <AntDesign name="play" size={20} color="white" />
-                </ImageBackground>
-                <Text
-                  style={{ color: "white", fontSize: 18, fontWeight: "700" }}
-                >
+                />
+                </View>
+
+                <Text style={{ color: "white", fontSize: 18, fontWeight: "700" }}>
                   {item.name}
                 </Text>
+                </TouchableOpacity>
+
               </Surface>
-              </TouchableOpacity>
+             
             );
           }}
         />
@@ -84,19 +93,23 @@ export default function RecentlyPlayed (){
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
+    height: 195,
     width: "100%",
-    marginBottom:20,
-    marginTop:10
+    marginBottom:20
   },
   surface: {
-    width: 130,
+      
+    width: 125,
     padding: 5,
     backgroundColor: "transparent",
-    margin: 3,
+    margin: 5,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 15,
+    borderRadius: 10,
+
+    
+    
+    
     
   },
 });

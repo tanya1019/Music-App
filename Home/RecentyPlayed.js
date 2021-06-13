@@ -46,11 +46,13 @@ export default function RecentlyPlayed (){
     ]);
     return (
       <View style={styles.container}>
+
         <Text style={{fontSize: 24, fontWeight: "bold",color: "white",paddingLeft: 5,}}>
           Recently Played
         </Text>
+
         <FlatList
-         showsHorizontalScrollIndicator = {true}
+          showsHorizontalScrollIndicator = {true}
           keyExtractor={(item) => item.id}
           data={songname}
           horizontal={true}
@@ -61,6 +63,7 @@ export default function RecentlyPlayed (){
                 <ImageBackground
                   style={{ width: 120, height: 120, borderRadius: 10, justifyContent:'flex-end', padding:7 }}
                   source={item.img}
+                  imageStyle = {{borderRadius:10}}
                 >
                     <AntDesign name="play" size={20} color="white" />
                 </ImageBackground>
@@ -81,19 +84,21 @@ export default function RecentlyPlayed (){
 
 const styles = StyleSheet.create({
   container: {
-    height: 190,
+    height: 200,
     width: "100%",
-    marginBottom:20
+    marginBottom:20,
+    marginTop:10
   },
   surface: {
-    width: 140,
+    width: 130,
     padding: 5,
-    backgroundColor: "#2d2d2d",
+    backgroundColor: "transparent",
     margin: 3,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
+    borderRadius: 15,
 
+    
   },
 });
 

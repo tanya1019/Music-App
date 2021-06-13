@@ -1,34 +1,29 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
-import CarouselPodcast from '../CustomList/CarouselPodcast';
+import PodcastCarousel from '../CustomList/PodcastCarousel';
+import { LinearGradient } from 'expo-linear-gradient'
+import PopularRadioList from '../CustomList/PopularRadioList';
+import { StatusBar } from 'expo-status-bar';
+import Motivation from '../CustomList/Motivation';
 
 const Podcast = (props) => {
     return (
-    <View style = {styles.container}>
+ 
+                <LinearGradient style = {styles.container} 
+                   colors = {['#e92b81', '#202aa8']}>
+            < StatusBar style = 'dark'/>
 
-              
-        <View style={styles.header}>
+               <Text style = {{color:'white', fontSize:40, fontWeight:'bold'}}>
+                   Podcast
+               </Text>
 
-            <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
-                <TouchableOpacity onPress={() => props.navigation.navigate("Home")} >
-                    <Ionicons name="chevron-back" size={30} color="#066EF5" />
-                </TouchableOpacity>
-            </View>
+            <PodcastCarousel/>
+            <PopularRadioList navigation = {props.navigation}/>
+            <Motivation navigation = {props.navigation}/>
 
-            <View style={{ width: "80%", alignItems: "center", justifyContent: "center" }}>
-                <Text style={styles.headertext}>
-                    Podcast
-                </Text>
-            </View>
-
-            <View style={{ width: "10%" }}></View>
-
-            </View>
-
-            <CarouselPodcast/>
-
-    </View>
+              </LinearGradient>
+             
     )
 }
 
@@ -37,19 +32,10 @@ export default Podcast
 const styles = StyleSheet.create({ 
     container: {
         flex: 1,
-        backgroundColor: "black",
-        paddingTop:40
+        backgroundColor: "white",
+        paddingTop:60,
+        alignItems:'center'
+
       },
-      header: {
-        backgroundColor: "black",
-        width: "100%",
-        height: 60,
-        flexDirection: "row",
-      },
-      headertext: {
-        fontSize: 22,
-        fontWeight: "bold",
-        color:'#066EF5'
-      },
-    
+     
 })

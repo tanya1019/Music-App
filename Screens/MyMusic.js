@@ -7,10 +7,13 @@ import MyDownloads from '../MyMusic/MyDownloads';
 import MyLibrary from '../MyMusic/MyLibrary';
 import MyFavs from '../MyMusic/MyFavs';
 import { AntDesign } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient'
 
 const MyMusic = (props) => {
     return (
-        <View style = {styles.container}>
+
+        <LinearGradient style = {styles.container} 
+        colors = {['#202aa8', '#e92b81']}>
 
 {/*--------------------------------------------Header----------------------------------------------------------- */}
 
@@ -18,7 +21,7 @@ const MyMusic = (props) => {
 
             <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
                 <TouchableOpacity onPress={() => props.navigation.navigate("Home")} >
-                    <Ionicons name="chevron-back" size={30} color="#066EF5" />
+                    <Ionicons name="chevron-back" size={30} color="white" />
                 </TouchableOpacity>
             </View>
 
@@ -39,15 +42,15 @@ const MyMusic = (props) => {
                 <View style = {{width:'90%', alignItems:'center', flexDirection:'row'}}>
 
                     <View style = {{paddingLeft:5}}>
-                        <AntDesign name="playcircleo" size={24} color="#066EF5" />
+                        <AntDesign name="playcircleo" size={24} color="white" />
                     </View>
                      
                     <View>
-                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold', color:'#066EF5'}}>
+                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold', color:'white'}}>
                             My Downloads
                         </Text>
 
-                        <Text style = {{paddingLeft:30, fontSize:15, color:'grey'}}>
+                        <Text style = {{paddingLeft:30, fontSize:15, color:'pink'}}>
                             9 songs
                         </Text>
                     </View>
@@ -55,7 +58,7 @@ const MyMusic = (props) => {
                 </View>
                 
                 <View style = {{width:'10%'}}>
-                 <AntDesign name="right" size={24} color="#066EF5" />
+                 <AntDesign name="right" size={24} color="white" />
                 </View>
 
             </View>
@@ -69,15 +72,15 @@ const MyMusic = (props) => {
                 <View style = {{width:'90%', alignItems:'center', flexDirection:'row'}}>
 
                      <View style = {{paddingLeft:5}}>
-                        <AntDesign name="playcircleo" size={24} color="#066EF5" />
+                        <AntDesign name="playcircleo" size={24} color="white" />
                     </View>
 
                     <View>
-                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold', color:'#066EF5'}}>
+                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold', color:'white'}}>
                             My Favourites
                         </Text>
 
-                        <Text style = {{paddingLeft:30, fontSize:15, color:'grey'}}>
+                        <Text style = {{paddingLeft:30, fontSize:15, color:'pink'}}>
                             15 songs
                         </Text>
                     </View>
@@ -85,7 +88,7 @@ const MyMusic = (props) => {
                 </View>
 
                 <View style = {{width:'10%'}}>
-                    <AntDesign name="right" size={24} color="#066EF5" />
+                    <AntDesign name="right" size={24} color="white" />
                 </View>
 
             </View>
@@ -97,15 +100,15 @@ const MyMusic = (props) => {
                 <View style = {{width:'90%', alignItems:'center', flexDirection:'row'}}>
 
                     <View style = {{paddingLeft:5}}>
-                        <AntDesign name="playcircleo" size={24} color="#066EF5" />
+                        <AntDesign name="playcircleo" size={24} color="white" />
                     </View>
 
                     <View>
-                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold', color:'#066EF5'}}>
+                        <Text style = {{paddingLeft:30, fontSize:20, fontWeight:'bold', color:'white'}}>
                             My Library
                         </Text>
 
-                        <Text style = {{paddingLeft:30, fontSize:15, color:'grey'}}>
+                        <Text style = {{paddingLeft:30, fontSize:15, color:'pink'}}>
                             30 songs
                         </Text>
                     </View>
@@ -113,7 +116,7 @@ const MyMusic = (props) => {
                 </View>
 
                 <View style = {{width:'10%'}}>
-                    <AntDesign name="right" size={24} color="#066EF5" />
+                    <AntDesign name="right" size={24} color="white" />
                 </View>
 
             </View>
@@ -121,7 +124,7 @@ const MyMusic = (props) => {
 
 {/*------------------------------------------------------End----------------------------------------------------------- */}      
    
-        </View>
+        </LinearGradient>
         
     )
 }
@@ -133,10 +136,10 @@ const styles = StyleSheet.create({
     container:{
         paddingTop:50,
         flex:1,
-        backgroundColor:'black'
+        
     },
     header:{
-        backgroundColor:'black',
+       
         height:50,
         alignItems:'center',
         flexDirection:'row',
@@ -147,15 +150,20 @@ const styles = StyleSheet.create({
     headertext: {
         fontSize: 22,
         fontWeight: "bold",
-        color:'#066EF5'
+        color:'white'
       },
 
     download:{
-        backgroundColor:'#111111',
+        backgroundColor:'transparent',
         flexDirection:'row',
         alignItems:'center',
-        borderBottomWidth:2,
-        height:60
+        borderBottomWidth:1,
+        height:60,
+        borderTopWidth:1,
+        borderTopColor:'grey',
+        borderBottomColor:'black',
+        marginVertical:5,
+
     }
 
     

@@ -3,16 +3,18 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-nati
 import { Ionicons } from "react-native-vector-icons";
 import MusicList from '../CustomList/MusicList'
 import { FontAwesome } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient'
 
 const MyDownloads = (props) => {
     return (
-        <View style = {styles.container}>
+        <LinearGradient style = {styles.container}
+        colors = {['#202aa8', '#e92b81','#202aa8',]}>
 {/*------------------------------------Header-----------------------------------*/}
              <View style={styles.header}>
 
                 <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
                 <TouchableOpacity onPress={() => props.navigation.navigate("Home")} >
-                    <Ionicons name="chevron-back" size={30} color="#066EF5" />
+                    <Ionicons name="chevron-back" size={30} color="white" />
                 </TouchableOpacity>
                 </View>
 
@@ -23,7 +25,7 @@ const MyDownloads = (props) => {
                 </View>
 
                 <View style={{ width: "10%" ,alignItems:'center', justifyContent:'center' }}>
-                <FontAwesome name="search" size={24} color="#066EF5" />
+                <FontAwesome name="search" size={24} color="white" />
                 </View>
 
             </View>
@@ -59,7 +61,7 @@ const MyDownloads = (props) => {
 
 
         
-    </View>
+    </LinearGradient>
     )
 }
 
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
         paddingTop:40
       },
       header: {
-        backgroundColor: "black",
+       
         width: "100%",
         height: 60,
         flexDirection: "row",
@@ -80,6 +82,6 @@ const styles = StyleSheet.create({
       headertext: {
         fontSize: 22,
         fontWeight: "bold",
-        color:'#066EF5'
+        color:'white'
       },
 })

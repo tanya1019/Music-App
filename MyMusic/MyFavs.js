@@ -1,42 +1,44 @@
-import React from 'react'
-import { StyleSheet, Text, View , TouchableOpacity, ScrollView} from 'react-native'
-import { Ionicons , FontAwesome} from "react-native-vector-icons";
-import FavList from '../CustomList/FavList';
+import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Ionicons } from "react-native-vector-icons";
 import MusicList from '../CustomList/MusicList'
+import { FontAwesome } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient'
 
-const MyFavs = (props) => {
+const MyDownloads = (props) => {
     return (
-        <View style = {styles.container}>
+        <LinearGradient style = {styles.container}
+        colors = {['#202aa8', '#e92b81','#202aa8',]}>
 {/*------------------------------------Header-----------------------------------*/}
-            <View style={styles.header}>
-        
-                 <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
-                     <TouchableOpacity onPress={() => props.navigation.navigate("Home")} >
-                        <Ionicons name="chevron-back" size={30} color="#066EF5" />
-                     </TouchableOpacity>
-                 </View>
-        
-                 <View style={{ width: "80%", alignItems: "center", justifyContent: "center" }}>
-                    <Text style={styles.headertext}>
-                         My Favourites
-                    </Text>
-                 </View>
-        
-                 <View style={{ width: "10%" ,alignItems: "center", justifyContent: "center" }}>
-                 <FontAwesome name="search" size={24} color="#066EF5" />
-                 </View>
-        
-            </View>
- {/*------------------------------------Header-----------------------------------*/}
-      <FavList navigation = {props.navigation}/>
- {/* <ScrollView style={{flex:1, width: "100%" }}>
+             <View style={styles.header}>
 
-        <TouchableOpacity>
+                <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
+                <TouchableOpacity onPress={() => props.navigation.navigate("Home")} >
+                    <Ionicons name="chevron-back" size={30} color="white" />
+                </TouchableOpacity>
+                </View>
+
+                <View style={{ width: "80%", alignItems: "center", justifyContent: "center" }}>
+                <Text style={styles.headertext}>
+                    My Favourites
+                </Text>
+                </View>
+
+                <View style={{ width: "10%" ,alignItems:'center', justifyContent:'center' }}>
+                <FontAwesome name="search" size={24} color="white" />
+                </View>
+
+            </View>
+{/*------------------------------------Header-----------------------------------*/}
+
+      <ScrollView style={{flex:1, width: "100%" }}>
+        
+          <TouchableOpacity>
           <MusicList Music="Dil mere" Detail="Local train" />
           </TouchableOpacity>
-
+          
           <TouchableOpacity>
-          <MusicList Music="Dusk till down" Detail="Zyan"/>
+          <MusicList Music="Dusk till down" Detail="Zyan" />
           </TouchableOpacity>
 
           <TouchableOpacity>
@@ -55,13 +57,15 @@ const MyFavs = (props) => {
           <MusicList Music="Tum mile" Detail="Unknown" />
           </TouchableOpacity>
           
-    </ScrollView> */}
+      </ScrollView>
 
-                </View>
+
+        
+    </LinearGradient>
     )
 }
 
-export default MyFavs
+export default MyDownloads
 
 const styles = StyleSheet.create({
     container: {
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
         paddingTop:40
       },
       header: {
-        backgroundColor: "black",
+       
         width: "100%",
         height: 60,
         flexDirection: "row",
@@ -78,6 +82,6 @@ const styles = StyleSheet.create({
       headertext: {
         fontSize: 22,
         fontWeight: "bold",
-        color:'#066EF5'
+        color:'white'
       },
 })

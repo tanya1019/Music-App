@@ -28,6 +28,7 @@ import MyDownloads from './MyMusic/MyDownloads';
 import MyFavs from './MyMusic/MyFavs';
 import MyLibrary from './MyMusic/MyLibrary';
 import MusicPlayer from './Screens/MusicPlayer';
+import MusicCatogList from './Screens/MusicCatogList';
 
 
 const Stack = createStackNavigator();
@@ -42,7 +43,7 @@ export default function App(){
         options = {{headerShown : false }}/>
         <Stack.Screen name = 'SignUp' component = {SignUp}
         options = {{headerShown : false }}/>
-        <Stack.Screen name = 'Home' component = {bottomtab}
+        <Stack.Screen name = 'Home' component = {drawer}
         options = {{headerShown : false }}/>
         <Stack.Screen name = 'LanguagePref' component = {LanguagePref}
         options = {{headerShown : false }}/>
@@ -66,6 +67,8 @@ export default function App(){
         options = {{headerShown:false}}/>
        <Stack.Screen name = 'MusicPlayer' component = {MusicPlayer}
         options = {{headerShown:false}}/>
+        <Stack.Screen name = 'MusicCatogList' component = {MusicCatogList}
+        options = {{headerShown:false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -76,12 +79,14 @@ const Tab = createMaterialBottomTabNavigator();
 function bottomtab(){
   return (
     <Tab.Navigator 
-        activeColor="#066EF5"
+        activeColor="#e92b81"
         barStyle={{ backgroundColor: "black" }}
-        shifting={true}>
+        shifting={true}
+        inactiveColor = '#202aa8'>
+        
+        
 
-
-      <Tab.Screen name = 'Home' component = {drawer}
+      <Tab.Screen name = 'Home' component = {Home}
       options = {{
         tabBarIcon : ({color}) => (
           <Entypo name="home" size={24} color={color} />
@@ -114,7 +119,7 @@ const Dra = createDrawerNavigator();
 function drawer(){
   return (
   <Dra.Navigator drawerContent = {(props) => <DrawerContent {...props}/>}>
-    <Dra.Screen name = 'Home' component = {Home}/>
+    <Dra.Screen name = 'Home' component = {bottomtab}/>
     <Dra.Screen name = 'Notifications' component = {Notifications}/>
     <Dra.Screen name = 'Account' component = {Account}/>
     <Dra.Screen name = 'Settings' component = {Settings}/>  

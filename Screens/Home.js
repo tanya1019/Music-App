@@ -9,31 +9,36 @@ import MusicCatog from '../Home/MusicCatog';
 import RecentyPlayed from '../Home/RecentyPlayed'
 import Trending from '../Home/Trending';
 import TodaysPick from '../Home/TodaysPick';
+import CategoryCarousel from '../CustomList/CategoryCarousel';
+import { LinearGradient } from 'expo-linear-gradient'
 
 const Home = (props) => {
     return (
 
-        <View style = {styles.container}>
+        <LinearGradient style = {styles.container}
+        colors = {['#202aa8', '#e92b81']}>
 
-            <StatusBar style = 'light' />
+            <StatusBar style = 'dark' />
 
 {/*---------------------------------------------- header section---------------------------------------------*/ }
            
-            <View style = {styles.header}>
+            <View style = {styles.header}
+            >
+
                 <View style = {{width:'10%'}}>
                     <TouchableOpacity onPress = {() => props.navigation.openDrawer()}>
-                        <Entypo name="menu" size={28} color="black" />
+                        <Entypo name="menu" size={28} color="white" />
                     </TouchableOpacity>
                 </View>
 
                 <View style = {{width:'80%', alignItems:'center'}}>
-                  <Text style = {{fontWeight:'bold', fontSize:20}}>
+                  <Text style = {{fontWeight:'bold', fontSize:20, color:'white'}}>
                     MUSIC
                   </Text>
                 </View>
 
                 <View style = {{width:'10%'}}>
-                    <FontAwesome name="search" size={24} color="black" />
+                    <FontAwesome name="search" size={24} color="white" />
                 </View>
             </View>
 
@@ -41,10 +46,10 @@ const Home = (props) => {
 
                 <View style = {styles.search}>
                     <View style = {{width:'90%' , flexDirection:'row', alignItems:'center'}}>
-                        <FontAwesome name="search" size={18} color="grey" />
-                        <TextInput style = {{width:"90%", paddingLeft:5}} placeholder = 'Search' />
+                        <FontAwesome name="search" size={18} color="white" />
+                        <TextInput style = {{width:"90%", paddingLeft:5}} placeholder = 'Search' placeholderTextColor = 'white' />
                     </View>                   
-                        <Feather name="mic" size={18} color="grey" />
+                        <Feather name="mic" size={18} color="white" />
                 </View>
 
 {/*---------------------------------Music List------------------------------------------------------------ */}
@@ -91,13 +96,13 @@ const Home = (props) => {
                     </ScrollView>
             </View>
     */}
-            <MusicCatog navigation = {props.navigation}/>
+            <CategoryCarousel navigation = {props.navigation}/>
             <RecentyPlayed navigation = {props.navigation}/>
             <Trending navigation = {props.navigation}/>
             <TodaysPick navigation = {props.navigation}/>
 
             </ScrollView>
-        </View>
+        </LinearGradient>
     )
 }
 export default Home;
@@ -110,21 +115,25 @@ const styles = StyleSheet.create({
         paddingTop:50,
         flex:1,
         alignItems:'center',
-        backgroundColor:'black'
+        backgroundColor:'white'
     },
 
     header:{
         width :"100%",
         height:50,
-        backgroundColor:'#066EF5',
+        backgroundColor:'transparent',
         justifyContent:'center',
         alignItems:"center",
-        flexDirection:'row'
+        flexDirection:'row',
+         borderTopWidth:1,
+        borderTopColor:'grey',
+        borderBottomColor:'black',
+        borderBottomWidth:1
     }, 
     
     search:{
         flexDirection:'row',
-        backgroundColor:'white',
+        backgroundColor:'#e92b81',
         width: '70%',
         height: 30,
         paddingLeft:10,

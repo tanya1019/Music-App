@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { useState } from "react";
 import { ImageBackground, TouchableOpacity } from "react-native";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
+import { AntDesign } from '@expo/vector-icons';
+import { useState } from "react";
 
-export default function Trending (props){
-    const [songname, setSongname]= useState ([
+export default function RecentlyPlayed (){
+   const[songname , setSongname]= useState ( [
       {
         name: "Shake it off",
         img: {
@@ -33,7 +34,6 @@ export default function Trending (props){
         img: {
           uri :'https://i.pinimg.com/236x/9d/8a/a3/9d8aa35626f6561216b1399720ac1512--wedding-songs-taylor-swift-album.jpg'
         },
-        artist : 'Tanya',
         id: "4",
       },
       {
@@ -41,36 +41,32 @@ export default function Trending (props){
         img: {
           uri :'https://i1.sndcdn.com/artworks-000256017659-fqjbgs-t500x500.jpg'
         },
-         artist : 'Tanya',
         id: "5",
       },
     ]);
-
     return (
       <View style={styles.container}>
-        <Text
-          style={{
-            fontSize: 24,
-            fontWeight: "bold",
-            color: "white",
-            paddingLeft: 5,
-          }}
-        >
+
+        <Text style={{fontSize: 24, fontWeight: "bold",color: "white",paddingLeft: 5,}}>
           Trending
         </Text>
+
         <FlatList
-         showsHorizontalScrollIndicator = {true}
+          showsHorizontalScrollIndicator = {true}
           keyExtractor={(item) => item.id}
           data={songname}
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
-              <TouchableOpacity onPress = {() => props.navigation.navigate('MusicPlayer', {item})}>
+              <TouchableOpacity>
               <Surface style={styles.surface}>
-                <Image
-                  style={{ width: 105, height: 105, borderRadius: 10 }}
+                <ImageBackground
+                  style={{ width: 120, height: 120, borderRadius: 10, justifyContent:'flex-end', padding:7 }}
                   source={item.img}
-                />
+                  imageStyle = {{borderRadius:10}}
+                >
+                    <AntDesign name="play" size={20} color="white" />
+                </ImageBackground>
                 <Text
                   style={{ color: "white", fontSize: 18, fontWeight: "700" }}
                 >
@@ -88,19 +84,20 @@ export default function Trending (props){
 
 const styles = StyleSheet.create({
   container: {
-    height: 175,
+    height: 200,
     width: "100%",
-    marginBottom: 20
+    marginBottom:20,
+    marginTop:10
   },
   surface: {
-    width: 120,
+    width: 130,
     padding: 5,
-    backgroundColor: "#2d2d2d",
-    margin: 5,
+    backgroundColor: "transparent",
+    margin: 3,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 10,
-    margin:4
+    borderRadius: 15,
+    
   },
 });
 
