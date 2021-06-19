@@ -4,6 +4,7 @@ import { Ionicons } from "react-native-vector-icons";
 import MusicList from '../CustomList/MusicList'
 import { FontAwesome } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient'
+import DownloadList from '../CustomList/DownloadList'
 
 const MyDownloads = (props) => {
     return (
@@ -31,7 +32,7 @@ const MyDownloads = (props) => {
             </View>
 {/*------------------------------------Header-----------------------------------*/}
 
-      <ScrollView style={{flex:1, width: "100%" }}>
+     {/* <ScrollView style={{flex:1, width: "100%" }}>
         
           <TouchableOpacity>
           <MusicList Music="Dil mere" Detail="Local train" />
@@ -57,9 +58,9 @@ const MyDownloads = (props) => {
           <MusicList Music="Tum mile" Detail="Unknown" />
           </TouchableOpacity>
           
-      </ScrollView>
+    </ScrollView> */}
 
-
+    <DownloadList navigation = {props.navigation}/>
         
     </LinearGradient>
     )

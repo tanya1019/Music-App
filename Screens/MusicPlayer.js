@@ -1,11 +1,23 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View, Image, ImageBackground } from 'react-native'
-import { Ionicons , Feather, SimpleLineIcons,FontAwesome, MaterialCommunityIcons } from 'react-native-vector-icons';
+import { Ionicons , Feather, SimpleLineIcons,FontAwesome, MaterialCommunityIcons, MaterialIcons } from 'react-native-vector-icons';
 import Navigation from '../Settings/Navigation';
 import Slider from '@react-native-community/slider';
 
 const MusicPlayer = ({navigation, route}) => {
     
+
+
+const [status, setStatus] = React.useState('pause')
+const play_pause = () => {
+    if(status === 'pause'){
+        setStatus('play')
+    }else{
+        setStatus('pause')
+    }
+}
+
+
     const {item} = route.params;
     
     return (
@@ -13,8 +25,8 @@ const MusicPlayer = ({navigation, route}) => {
 
         <ImageBackground source = {item.img} style = {{flex:1, alignItems:'center', width:'100%'}} blurRadius = {10}>
 
-            <View style = {styles.header}>
 
+            <View style = {styles.header}>
                 <View style = {{width:'20%', height:'100%',justifyContent:'center'}}>
                     <TouchableOpacity onPress = {() => navigation.goBack()}>
                         <Ionicons name="chevron-back-sharp" size={32} color="white" />
@@ -33,78 +45,105 @@ const MusicPlayer = ({navigation, route}) => {
                 </View>
             </View>
 
+
             <View style = {{width:'100%', height:'70%', alignItems:'center', elevation:20}}>
+              
                 <View style = {{elevation:20, height:305, width:305, backgroundColor:'black', alignItems:'center', justifyContent:'center', borderRadius:20}}>
                 <Image source = {item.img} style = {{ width:300, height:300, borderColor:'black', borderRadius:20}}/>
                 </View>
 
-                  <View style = {styles.songnamesec}>
-                <View>
-                    <Text style = {{color:'white', fontSize:25, fontWeight:'bold'}}>
-                        {item.name}
-                    </Text>
-                    <Text style = {{color:'white', fontSize:15, fontWeight:'bold'}}>
-                        {item.artist}
-                    </Text>
-                </View>
+                <View style = {styles.songnamesec}>
+                      <View>
+                          <Text style = {{color:'white', fontSize:25, fontWeight:'bold'}}>
+                              {item.name}
+                          </Text>
+                          <Text style = {{color:'white', fontSize:15, fontWeight:'bold'}}>
+                              {item.artist}
+                          </Text>
+                      </View>
                 <FontAwesome name="heart" size={24} color="white" />
-            </View>
+              </View>
 
 
-            <Slider
-                style={{width: '80%', height: 40, alignItems:'center', justifyContent:'center', marginTop:40}}
-                minimumValue={0}
-                maximumValue={1}
-                minimumTrackTintColor="#FFFFFF"
-                maximumTrackTintColor="#000000"
-                
-            />
-            <View style = {{flexDirection:'row', height:10, width:'80%', justifyContent:'space-between', alignItems:'center'}}>
-            <Text style = {{color:'white', fontSize:15}}>
-                0:00
-            </Text>
+              <Slider
+                  style={{width: '80%', height: 40, alignItems:'center', justifyContent:'center', marginTop:40}}
+                  minimumValue={0}
+                  maximumValue={1}
+                  minimumTrackTintColor="#FFFFFF"
+                  maximumTrackTintColor="#000000"
+                  
+              />
 
-            <Text style = {{color:'white', fontSize:15}}>
-                3:20
-            </Text>
-            </View>
+              <View style = {{flexDirection:'row', height:10, width:'80%', justifyContent:'space-between', alignItems:'center'}}>
+                  <Text style = {{color:'white', fontSize:15}}>
+                      0:00
+                  </Text>
 
-            </View>
+                  <Text style = {{color:'white', fontSize:15}}>
+                      3:20
+                  </Text>
+              </View>
 
-            <View style = {{flexDirection:'row', alignItems:'center', height:'20%', width:'100%', backgroundColor:'black', borderTopStartRadius:30, borderTopEndRadius:30}}>
-               
-                <View style = {{alignItems:'center' ,justifyContent:'center', flex:1}}>
-                <Ionicons name="shuffle" size={34} color="white" />
+           </View>
+{/*-------------------------------------------bootom navigator--------------------------------------------- */}
+            <View
+          style={{
+            height: "20%",
+            width: "100%",
+            flexDirection: "row",
+            alignItems: "center",
+            borderTopStartRadius: 30,
+            borderTopEndRadius: 30,
+            backgroundColor: "black",
+            opacity: 0.8,
+          }}
+        >
+{/*------------------------------------------------------Shuffle Icon--------------------------------------------------------------------------------------------------------- */}
+         
+              
+                <View style={{width:'20%', alignItems:'center'}}>
+                  <TouchableOpacity>
+                  <MaterialIcons name="shuffle" size={24} color="white" />
+                  </TouchableOpacity>
                 </View>
+              
+         
+{/*------------------------------------------------------Playback Icon--------------------------------------------------------------------------------------------------------- */}
+         
+              <View style={{width:'20%', alignItems:'center'}}>
+                <TouchableOpacity>
+                  <Ionicons name="play-back" size={24} color="white" />
+                </TouchableOpacity>
+              </View>
 
-                 <View style = {{alignItems:'flex-start' ,justifyContent:'center', flex:1, paddingLeft:30}}>
-                     <Ionicons name="play-back-sharp" size={34} color="white" style = {{ flex :1, alignItems:'center', justifyContent:'center'}} />
-                 </View>
-
-                 <View style = {{alignItems:'center' ,justifyContent:'center'}}>
-                <Ionicons name="md-pause-circle" size={34} color="white" style = {{ flex :1, alignItems:'center', justifyContent:'center'}}/>
-                 </View>
-
-                 <View style = {{alignItems:'center' ,justifyContent:'center'}}>
-                <Ionicons name="play-forward-sharp" size={34} color="white" style = {{ flex :1, alignItems:'center', justifyContent:'center'}}/>
-                </View>
-
-                 <View style = {{alignItems:'center' ,justifyContent:'center'}}>
-                <MaterialCommunityIcons name="replay" size={34} color="white" style = {{ flex :1, alignItems:'center', justifyContent:'center'}}/>
-                </View>
-
-            </View>
-
+{/*--------------------------------------------------Pause Icon------------------------------------------------------------------------- */}
           
+              <View style={{width:'20%', alignItems:'center'}}>
+                <TouchableOpacity style={styles.playpause} onPress = {play_pause} >
+                  <Ionicons name={status} size={35} color="#434b56" />
+                </TouchableOpacity>
+              </View>
 
+{/*---------------------------------------Playforward Icon------------------------------------------------------------------------- */}
+         
+              <View style={{width:'20%', alignItems:'center'}} >
+                <TouchableOpacity>
+                  <Ionicons name="ios-play-forward" size={24} color="white" />
+                </TouchableOpacity>
+              </View>
 
+{/*------------------------------------------------Replay Icon------------------------------------------------------------------------- */}
+         
+              <View style={{width:'20%', alignItems:'center'}}>
+                <TouchableOpacity>
+                  <MaterialCommunityIcons name="replay" size={24} color="white" />
+                </TouchableOpacity>
+              </View>
 
-
-
-
-
-        </ImageBackground>
         </View>
+      </ImageBackground>
+       
+  </View>
     )
 }
 
@@ -133,6 +172,16 @@ const styles = StyleSheet.create({
         paddingHorizontal:20,
         marginTop:30,
         justifyContent:'space-between'
-    }
+    },
+
+  playpause: {
+    height: 70,
+    width: 70,
+    borderRadius: 60,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white",
+  },
+
 
 })

@@ -11,6 +11,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient'
 
 
 
@@ -19,28 +20,29 @@ const Settings = (props) => {
     const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
     return (
 
-        <View style = {styles.container}>
+        <LinearGradient style = {styles.container} colors = {['#202aa8', '#e92b81']}>
           
 {/*---------------------------------------------------Header---------------------------------------------------------- */}
             
-            <View style = {{flexDirection:'row'}}>
-            <View style = {{width:'10%'}}>
-                    <TouchableOpacity onPress = {() => props.navigation.openDrawer()}>
-                        <Entypo name="menu" size={28} color="#066EF5" />
-                    </TouchableOpacity>
-            </View>
+            <View style = {styles.header}>
+                
+                <View style = {{width:'10%'}}>
+                        <TouchableOpacity onPress = {() => props.navigation.openDrawer()}>
+                            <Entypo name="menu" size={28} color="white" />
+                        </TouchableOpacity>
+                </View>
 
-            <View style = {{ width : '80%',justifyContent:'center', alignItems: 'center', marginBottom:20}}>
-                <Text style = {{color:'#066EF5', fontSize:24, fontWeight:'bold'}}>
-                    Settings
-                </Text>
-            </View>
+                <View style = {{ width : '80%',justifyContent:'center', alignItems: 'center'}}>
+                    <Text style = {{color:'white', fontSize:24, fontWeight:'bold',}}>
+                        Settings
+                    </Text>
+                </View>
             </View>
 
 {/*------------------------------------------Language Settings Heading-------------------------------------------- */}
-            
             <ScrollView style = {{width:'100%'}}>
-            <View>
+
+            <View style = {{marginTop:10}}>
                 <Text style = {{color:'white', fontSize:20, fontWeight:'bold', marginBottom:10}}>
                     Language Settings
                 </Text>
@@ -48,18 +50,18 @@ const Settings = (props) => {
 
 {/*----------------------------------------------Language Preference---------------------------------------------------- */}
             
-            <TouchableOpacity onPress = {() => props.navigation.navigate('LanguagePref')}>
+            <TouchableOpacity onPress = {() => props.navigation.navigate('LanguagePref')} >
                 <View style = {styles.list}>
                     <View style = {{justifyContent:'center', width:'80%'}}>
                         <Text style = {styles.text}>
                             Language Preference
                         </Text>
-                        <Text style ={{color:'grey', fontSize:14 }}>
+                        <Text style ={{color:'pink', fontSize:14 }}>
                             Set your language
                          </Text>
                     </View>
                     <View style = {{alignItems:'flex-end', width:'20%', justifyContent:'center', paddingRight:10}}>
-                        <FontAwesome5 name="language" size={26} color="grey" />
+                        <FontAwesome5 name="language" size={26} color="pink" />
                     </View>  
                 </View>
            </TouchableOpacity>
@@ -77,22 +79,22 @@ const Settings = (props) => {
                <Text style = {styles.text}>
                    Download Quality
                </Text>
-               <Text style ={{color:'grey', fontSize:14 }}>
+               <Text style ={{color:'pink', fontSize:14 }}>
                      Set your download quality
                 </Text>
                </View>
                <View style = {{flexDirection:'row', width:'20%', alignItems:'center', justifyContent:'center', paddingRight:40}}>
 
                <TouchableOpacity>
-               <MaterialCommunityIcons name="quality-high" size={36} color="grey" />
+               <MaterialCommunityIcons name="quality-high" size={36} color="pink" />
                </TouchableOpacity>
 
                <TouchableOpacity>
-               <MaterialCommunityIcons name="quality-high" size={36} color="#066EF5" />
+               <MaterialCommunityIcons name="quality-high" size={36} color='#e92b81' />
                </TouchableOpacity>
 
                <TouchableOpacity>
-               <MaterialCommunityIcons name="quality-high" size={36} color="grey" />
+               <MaterialCommunityIcons name="quality-high" size={36} color="pink" />
                </TouchableOpacity>
 
                </View>
@@ -105,7 +107,7 @@ const Settings = (props) => {
                <Text style = {styles.text}>
                    Streaming Quality
                </Text>
-               <Text style ={{color:'grey', fontSize:14 }}>
+               <Text style ={{color:'pink', fontSize:14 }}>
                      Set your straming quality
                  </Text>
             </View>
@@ -113,15 +115,15 @@ const Settings = (props) => {
             <View style = {{flexDirection:'row', width:'30%', alignItems:'center', justifyContent:'center'}}>
                
                <TouchableOpacity >
-               <MaterialCommunityIcons name="quality-high" size={36} color="#066EF5" />
+               <MaterialCommunityIcons name="quality-high" size={36} color='#e92b81' />
                </TouchableOpacity>
 
                <TouchableOpacity>
-               <MaterialCommunityIcons name="quality-high" size={36} color="grey" />
+               <MaterialCommunityIcons name="quality-high" size={36} color="pink" />
                </TouchableOpacity>
 
                <TouchableOpacity>
-               <MaterialCommunityIcons name="quality-high" size={36} color="grey" />
+               <MaterialCommunityIcons name="quality-high" size={36} color="pink" />
                </TouchableOpacity>
 
                </View>
@@ -129,19 +131,19 @@ const Settings = (props) => {
            
 {/*---------------------------------------------------------Equalizer-------------------------------------------------------- */}
           
-           <TouchableOpacity onPress = {() => props.navigation.navigate('Eqalizer')}>
+           <TouchableOpacity onPress = {() => props.navigation.navigate('Eqalizer')} style = {styles.touch} >
            <View style = {styles.list}>
                <View style = {{width:'90%',justifyContent:'center', alignItems:'flex-start'}}>
                     <Text style = {styles.text}>
                         Equalizer
                     </Text>
-                    <Text style ={{color:'grey', fontSize:14 }}>
+                    <Text style ={{color:'pink', fontSize:14 }}>
                         Manipulate frequency
                     </Text>
                </View>
 
                <View  style = {{alignItems:'flex-end', width:'10%', justifyContent:'center', paddingRight:20}}>
-                    <MaterialIcons name="equalizer" size={24} color="grey" />
+                    <MaterialIcons name="equalizer" size={24} color="pink" />
                </View>
 
            </View>
@@ -155,7 +157,7 @@ const Settings = (props) => {
                     Data Usage
                 </Text>
 
-                <Text style ={{color:'grey', padding:5, marginTop:3, marginLeft:10}}>
+                <Text style ={{color:'pink', padding:5, marginTop:3, marginLeft:10}}>
                     219.8MB
                 </Text>
 
@@ -170,15 +172,15 @@ const Settings = (props) => {
                         Data saver
                     </Text>
 
-                    <Text style ={{color:'grey', fontSize:14 }}>
+                    <Text style ={{color:'pink', fontSize:14 }}>
                         Sets your music quality to low and disables artist canvases
                     </Text>
                </View>
 
                <View style = {{alignItems:'flex-end', width:'20%', justifyContent:'center', paddingRight:5}}>
                     <Switch
-                    trackColor={{ false: "#767577", true: "#066EF5" }}
-                    thumbColor={isEnabled ? "blue" : "#f4f3f4"}
+                    trackColor={{ false: "pink", true: "'#202aa8'" }}
+                    thumbColor={isEnabled ? '#202aa8' : 'white'}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={toggleSwitch}
                     value={isEnabled}
@@ -194,15 +196,15 @@ const Settings = (props) => {
                     <Text style = {styles.text}>
                         Data usage warning
                     </Text>
-                    <Text style ={{color:'grey', fontSize:14 }}>
+                    <Text style ={{color:'pink', fontSize:14 }}>
                         Warns about excess data usage
                     </Text>
                </View>
 
                <View style = {{alignItems:'flex-end', width:'20%', paddingRight:5 }}>
                     <Switch
-                    trackColor={{ false: "#767577", true: "#066EF5" }}
-                    thumbColor={isEnabled ? "blue" : "#f4f3f4"}
+                    trackColor={{ false: "pink", true: "'#202aa8'" }}
+                    thumbColor={isEnabled ? '#202aa8' : 'white'}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={toggleSwitch}
                     value={isEnabled}
@@ -221,20 +223,20 @@ const Settings = (props) => {
 
 {/*---------------------------------------------------Navigation---------------------------------------------------- */}
           
-          <TouchableOpacity onPress = {() => props.navigation.navigate('Navigation')}>
+          <TouchableOpacity onPress = {() => props.navigation.navigate('Navigation')} style = {styles.touch}>
                 <View style = {styles.list}>
                         <View style = {{justifyContent:'center', width:"80%"}}>
                             <Text style = {styles.text}>
                                 Navigation
                             </Text>
 
-                            <Text style ={{color:'grey', fontSize:14 }}>
+                            <Text style ={{color:'pink', fontSize:14 }}>
                                 Connect to navigation apps
                             </Text>
                         </View> 
                     
                     <View style = {{alignItems:'flex-end', width:'20%', justifyContent:'center', paddingRight:20}}>
-                        <Feather name="navigation" size={24} color="grey" />
+                        <Feather name="navigation" size={24} color="pink" />
                     </View>
 
                 </View>
@@ -249,24 +251,24 @@ const Settings = (props) => {
                 Car Mode
             </Text>
 
-            <Text style ={{color:'grey', fontSize:14 }}>
+            <Text style ={{color:'pink', fontSize:14 }}>
                Turns on your Auto Play
             </Text>
         </View>
 
         <View style = {{alignItems:'flex-end', width:'20%', justifyContent:'center', paddingRight:5}}>
             <Switch
-            trackColor={{ false: "#767577", true: "#066EF5" }}
-            thumbColor={isEnabled ? "blue" : "#f4f3f4"}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
-            value={isEnabled}
+            trackColor={{ false: "pink", true: "'#202aa8'" }}
+                    thumbColor={isEnabled ? '#202aa8' : 'white'}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch}
+                    value={isEnabled}
             />
         </View>
         </View>
 
 {/*---------------------------------------------------------------Sleep Mode------------------------------------------- */}
-        <TouchableOpacity onPress = {() => {}}>
+       
         <View style = {styles.list}>
 
                 <View style = {{justifyContent:'center', width:"80%"}}>
@@ -274,25 +276,25 @@ const Settings = (props) => {
                         Sleep Mode
                     </Text>
 
-                    <Text style ={{color:'grey', fontSize:14 }}>
+                    <Text style ={{color:'pink', fontSize:14 }}>
                         Set timer for your music
                     </Text>
                 </View>
 
                 <View style = {{alignItems:'flex-end', width:'20%', justifyContent:'center', paddingRight:5}}>
                     <Switch
-                    trackColor={{ false: "#767577", true: "#066EF5" }}
-                    thumbColor={isEnabled ? "blue" : "#f4f3f4"}
+                    trackColor={{ false: "pink", true: "'#202aa8'" }}
+                    thumbColor={isEnabled ? '#202aa8' : 'white'}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={toggleSwitch}
                     value={isEnabled}
                     />
-                    <Text style = {{color:'#066EF5', paddingRight:5}}>
+                    <Text style = {{color:'pink', paddingRight:5}}>
                         10 min
                     </Text>
                 </View>
                 </View>
-                </TouchableOpacity>
+                
 {/*-----------------------------------------------------Help and support--------------------------------- */}
 
             <View>
@@ -301,19 +303,19 @@ const Settings = (props) => {
                 </Text>
             </View>
 {/*--------------------------------------------------Customer Support-------------------------------------- */}
-        <TouchableOpacity onPress = {() => props.navigation.navigate('CustomerSupport')}>
+        <TouchableOpacity onPress = {() => props.navigation.navigate('CustomerSupport')} style = {styles.touch}>
            <View style = {styles.list}>
                <View style = {{width:'90%',justifyContent:'center', alignItems:'flex-start'}}>
                     <Text style = {styles.text}>
                         Customer Support
                     </Text>
-                    <Text style ={{color:'grey', fontSize:14 }}>
+                    <Text style ={{color:'pink', fontSize:14 }}>
                          Contact us
                     </Text>
                </View>
 
                <View  style = {{alignItems:'flex-end', width:'10%', justifyContent:'center', paddingRight:10}}>
-               <AntDesign name="customerservice" size={28} color="grey" />
+               <AntDesign name="customerservice" size={28} color="pink" />
                </View>
 
            </View>
@@ -321,7 +323,7 @@ const Settings = (props) => {
 
 {/*----------------------------------------------Updates------------------------------------------ */}
        
-        <TouchableOpacity onPress = {() => props.navigation.navigate('Updates')}>
+        <TouchableOpacity onPress = {() => props.navigation.navigate('Updates')} style = {styles.touch}>
 
            <View style = {styles.list}>
                
@@ -329,13 +331,13 @@ const Settings = (props) => {
                     <Text style = {styles.text}>
                         Updates
                     </Text>
-                    <Text style ={{color:'grey', fontSize:14 }}>
+                    <Text style ={{color:'pink', fontSize:14 }}>
                          Check for updates
                     </Text>
                </View>
 
                <View  style = {{alignItems:'flex-end', width:'10%', justifyContent:'center', paddingRight:10}}>
-                    <MaterialIcons name="update" size={28} color="grey" />
+                    <MaterialIcons name="update" size={28} color="pink" />
                </View>
            </View>
         </TouchableOpacity>
@@ -343,7 +345,7 @@ const Settings = (props) => {
 {/*-------------------------------------------------------End------------------------------------------- */}
          
            </ScrollView>
-        </View>
+        </LinearGradient>
         
     )
 }
@@ -355,26 +357,47 @@ const styles = StyleSheet.create({
     container:{
         paddingTop:50,
         flex:1,
-        backgroundColor:'black'
+        backgroundColor:'transparent'
+    },
+    
+    header:{
+        flexDirection:'row',
+        alignItems:'center',
+        borderBottomColor:'grey',
+        borderBottomWidth:1,
+        borderTopColor:'black',
+        borderTopWidth:1,
+        height:60,
+        padding:5
     },
 
     text:{
         fontSize:16,
         fontWeight:'bold',
-        color:'#066EF5',
+        color:'white',       
+    },
+
+    list: {
+        height:65,
+        width:'100%', 
+        backgroundColor:'transparent',
+        flexDirection:'row',
+        paddingLeft:10,
+        alignItems:'center',
+        borderBottomColor:'grey', 
+        borderBottomWidth:1, 
+        borderTopColor:'black', 
+        borderTopWidth:1,
         
     },
 
-    list:{
-        height:65,
-        width:'100%', 
-        backgroundColor:'#111111',
-        flexDirection:'row',
-        borderBottomWidth:2, 
-        paddingLeft:10,
-        alignItems:'center',
+    touch:{
+        borderBottomColor:'black', 
+        borderBottomWidth:1, 
+        borderTopColor:'grey', 
+        borderTopWidth:1,
         
-    }
-    
+    },
+
 })
 

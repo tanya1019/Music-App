@@ -64,14 +64,14 @@ export default function Motivation(){
             marginBottom:10
           }}
         >
-          Popular Radio
+          Motivation
         </Text>
         <FlatList
          showsHorizontalScrollIndicator = {false}
           keyExtractor={(item) => item.id}
           data={songname}
           horizontal={false}
-          numColumns = {2}
+          numColumns = {3}
           renderItem={({ item, index }) => {
             return (
               
@@ -147,10 +147,10 @@ const styles = StyleSheet.create({
   },
   surface: {
       
-    width: '50%',
-    padding: 5,
+    width: '33%',
+    padding: 3,
     backgroundColor: "transparent",
-    margin: 5,
+    margin: 3,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,

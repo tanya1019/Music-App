@@ -130,6 +130,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     height:230,
-    marginTop:30
+    marginTop:0
   },
 });

@@ -51,7 +51,7 @@ export default function PopularRadioList(){
             fontWeight: "bold",
             color: "white",
             paddingLeft: 15,
-            marginBottom:10
+            marginBottom:5
           }}
         >
           Popular Radio
@@ -98,19 +98,13 @@ const styles = StyleSheet.create({
     marginBottom:20
   },
   surface: {
-      
     width: 125,
     padding: 5,
     backgroundColor: "transparent",
-    margin: 5,
+    margin: 3,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 10,
-
-    
-    
-    
-    
   },
 });
 

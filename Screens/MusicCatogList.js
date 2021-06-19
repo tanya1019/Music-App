@@ -7,6 +7,7 @@ const MusicCatogList = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
+      
      {/*} {item.list.map((item) => (
           <View key = {item.id}>
         <TouchableOpacity

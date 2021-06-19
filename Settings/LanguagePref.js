@@ -1,18 +1,19 @@
 import React from 'react'
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const LanguagePref = (props) => {
     return (
 
-        <View style = {styles.container}>
+        <LinearGradient style = {styles.container} colors = {['#202aa8', '#e92b81']}>
 {/*---------------------------------------------Header------------------------------------------------------------ */}
         
         <View style={styles.header}>
 
         <View style={{ width: "10%", justifyContent: "center", paddingLeft:5 }}>
           <TouchableOpacity onPress={() => props.navigation.navigate("Settings")}>
-            <Ionicons name="chevron-back" size={30} color="#066EF5" />
+            <Ionicons name="chevron-back" size={30} color="white" />
           </TouchableOpacity>
         </View>
 
@@ -135,7 +136,7 @@ const LanguagePref = (props) => {
           </View>
 {/*-------------------------------------------------Ends----------------------------------------------------------- */}
             </ScrollView>
-    </View>
+    </LinearGradient>
     )
 }
 
@@ -144,12 +145,12 @@ export default LanguagePref
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "black",
+        backgroundColor: "transparent",
         paddingTop:40
       },
       
       header: {
-        backgroundColor: "black",
+        backgroundColor: "transparent",
         width: "100%",
         height: 60,
         flexDirection: "row",
@@ -159,22 +160,25 @@ const styles = StyleSheet.create({
       headertext: {
         fontSize: 22,
         fontWeight: "bold",
-        color:'#066EF5'
+        color:'white'
       },
 
       lang:{
-          width:'90%',
+          width:'100%',
           height:40,
-          backgroundColor:'#222831',
+          backgroundColor:'transparent',
           justifyContent:'center',
           alignItems:'center',
+          marginVertical:5,
+          borderBottomColor:'grey',
           borderBottomWidth:1,
-          borderRadius:20
+          borderTopColor:'black',
+          borderTopWidth:1,
       },
 
       langtext:{
           fontSize:24,
           color:'white',
-          fontWeight:'600'
+          fontWeight:'bold'
       }
 })

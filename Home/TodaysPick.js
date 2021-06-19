@@ -6,7 +6,7 @@ import { Surface } from "react-native-paper";
 import { AntDesign } from '@expo/vector-icons';
 import { useState } from "react";
 
-export default function RecentlyPlayed (){
+export default function RecentlyPlayed (props){
    const[songname , setSongname]= useState ( [
       {
         name: "Shake it off",
@@ -58,7 +58,7 @@ export default function RecentlyPlayed (){
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
-              <TouchableOpacity>
+              <TouchableOpacity onPress = {() => props.navigation.navigate('MusicPlayer', {item})}>
               <Surface style={styles.surface}>
                 <ImageBackground
                   style={{ width: 120, height: 120, borderRadius: 10, justifyContent:'flex-end', padding:7 }}
