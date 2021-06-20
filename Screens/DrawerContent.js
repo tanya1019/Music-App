@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { View, StyleSheet, TouchableOpacity , Alert} from "react-native";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import {Avatar,Title,Caption,Paragraph,Drawer,Text,TouchableRipple,Switch} 
@@ -7,8 +7,33 @@ import {MaterialCommunityIcons,FontAwesome,Ionicons} from "react-native-vector-i
 import { MaterialIcons } from '@expo/vector-icons';
 import {ProgressBar, color} from 'react-native-paper';
 import { LinearGradient } from 'expo-linear-gradient'
+import { auth, db } from '../Config';
 
 export function DrawerContent(props) {
+const [userData, setUserData] = useState([])
+
+const getUser = async () => {
+  await db.collection('users').doc(auth.currentUser.uid).get().then((doc) => {
+    if(doc.exists){
+      setUserData(doc.data())
+      console.log(doc.data())
+    }
+  })
+};
+
+useEffect(() => {
+    const unsubscribe = props.navigation.addListener("focus", () => {
+      getUser();
+    });
+    return unsubscribe;
+  }, [props.navigation]);
+
+
+
+
+
+
+
   return (
     <View style={{ flex: 1, backgroundColor: "black" }}>
 
@@ -26,9 +51,9 @@ export function DrawerContent(props) {
                 size={55}
               />
               <View style={{ marginLeft: 10 }}>
-                <Title style={{ color: '#e92b81', fontWeight:'bold' }}>Tanya Thakur</Title>
+                <Title style={{ color: '#e92b81', fontWeight:'bold' }}>{userData.name}</Title>
                 <Caption style={{ fontSize: 15, color: '#202aa8' }}>
-                  @tanya__1019
+                  {userData.email}
                 </Caption>
               </View>
             </View>

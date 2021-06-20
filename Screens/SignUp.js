@@ -1,32 +1,72 @@
-import React from 'react'
-import { StyleSheet, Text, TextInput, View , Button, TouchableOpacity, ImageBackground} from 'react-native'
+import React, {useState} from 'react'
+import { StyleSheet, Text, TextInput, View , Button, TouchableOpacity, ImageBackground, ScrollView} from 'react-native'
 import Svg, { G, Circle } from 'react-native-svg';
+import { auth, db } from '../Config';
+import firebase from 'firebase';
 const SignUp = ({navigation}) => {
 
 
+const [username,setUsername] = useState("")
+const [email,setEmail] = useState("")
+const [password,setPassword] = useState("")
+
+const register = () => {
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((authUser) => {
+          authUser.user.updateProfile({
+          displayName: username,
+        //   photoURL:
+        //     imageUrl ||
+        //     "https://fgcucdn.fgcu.edu/_resources/images/faculty-staff-male-avatar-200x200.jpg",
+        });
+        db.collection("users").doc(auth.currentUser.uid).set({
+          name: username,
+          email: email,
+          imageUrl:''
+        });
+        navigation.navigate("Home");
+      })
+      .catch((error) => alert(error));
+  };
 
 
     return (
 
 
+       
 
 
-
-        <View style = {styles.container}>
-
+       <View style = {styles.container}>
 
             <ImageBackground source = {{uri:"https://image.freepik.com/free-vector/musical-background-with-colorful-music-notes-waves_53562-1020.jpg"}}
                         style = {styles.image}
                         blurRadius = {0.9}>
 
-                <TextInput placeholder = 'Enter Username' style = {styles.username} placeholderTextColor = 'white'/>
-                <TextInput placeholder = 'Enter Email' style = {styles.input} placeholderTextColor = 'white'/>
-                <TextInput placeholder = 'Enter Password' style = {styles.input} placeholderTextColor = 'white'/>
-                <TextInput placeholder = 'Confirm Password' style = {styles.input} placeholderTextColor = 'white'/>
-
+                <TextInput
+            style={styles.inputuser}
+            placeholder="Username"
+            placeholderTextColor="yellow"
+            value={username}
+            onChangeText={(text) => setUsername(text)}
+          />
+          <TextInput
+            style={styles.inputemail}
+            placeholder="Email"
+            placeholderTextColor="yellow"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+          <TextInput
+            style={styles.inputpass}
+            placeholder="Password"
+            placeholderTextColor="yellow"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
                
 
-                <TouchableOpacity style = {styles.signup} onPress = {() => navigation.navigate('Home')}>
+                <TouchableOpacity style = {styles.signup} onPress = {register}>
                     <Text style = {{color:'white', fontWeight:'bold', fontSize:20}}>
                         SignUp
                     </Text>
@@ -34,20 +74,23 @@ const SignUp = ({navigation}) => {
 
             </ImageBackground>
         </View>
+       
+        
     )
 }
 
 const styles = StyleSheet.create({
 
     container:{
-        justifyContent:'center', 
-        alignItems:'center',
-        flex:1
+        
+        flex:1,
+        width:'100%',
+        height:'100%'
     },
 
     input:{
         backgroundColor:'#202aa8',
-        justifyContent:'center', 
+        justifyContent:'space-evenly', 
         alignItems:'center',
         borderRadius:20,
         marginBottom:10,
@@ -86,7 +129,32 @@ const styles = StyleSheet.create({
         paddingLeft:10,
         marginTop:65
     },
-
+inputuser: {
+    backgroundColor: "grey",
+    width: "70%",
+    height: 45,
+    borderRadius: 15,
+    maxWidth: 500,
+    paddingLeft: 10,
+  },
+  inputemail: {
+    backgroundColor: "grey",
+    width: "70%",
+    height: 45,
+    borderRadius: 15,
+    maxWidth: 500,
+    paddingLeft: 10,
+    marginTop: 10,
+  },
+  inputpass: {
+    backgroundColor: "grey",
+    width: "70%",
+    height: 45,
+    borderRadius: 15,
+    maxWidth: 500,
+    paddingLeft: 10,
+    marginTop: 10,
+  },
     
 })
 

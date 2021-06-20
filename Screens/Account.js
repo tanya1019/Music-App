@@ -4,8 +4,22 @@ import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from 'react-native-vector-icons';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { Feather , MaterialIcons} from '@expo/vector-icons';
+import { auth, db } from '../Config';
+import firebase from 'firebase';
 
 const Account = (props) => {
+
+  const signOutUser = () => {
+    auth.signOut().then(() => {
+      props.navigation.replace("Login");
+    });
+  };
+
+
+
+
+
+
     return (
         <View style = {styles.container}>
 {/*---------------------------------------------------------------Header------------------------------------------- */}
@@ -115,7 +129,7 @@ const Account = (props) => {
     </View>
 
         <View style = {styles.signout}>
-            <TouchableOpacity onPress = {() => props.navigation.navigate('Login')}>
+            <TouchableOpacity onPress = {signOutUser}>
                 <Text style = {{color:'white', fontSize:20}}>
                     Sign Out
                 </Text>

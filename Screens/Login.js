@@ -1,9 +1,44 @@
 import { LinearGradient } from 'expo-linear-gradient'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, TextInput, View, Button, ImageBackground, TouchableOpacity } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
+import { auth, db } from '../Config';
+import firebase from 'firebase';
 
 const Login = ({navigation}) => {
+
+const [email,setEmail] = useState("")
+const [password,setPassword] = useState("")
+const [loading, setLoading] = useState(true)
+
+useEffect(() => {
+   const unsub = auth.onAuthStateChanged((authUser) => {
+       if(authUser){
+           navigation.navigate('Home'),
+           setLoading(false),
+           console.log('User Present -->' );
+       }else{
+           console.log('No User')
+       }
+   })
+    return unsub
+        
+    
+}, [])
+
+const login = () => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((authUser) => {
+       
+        navigation.navigate("Home");
+      })
+      .catch((error) => alert(error));
+  };
+
+
+
+
     return (
         <View style = {styles.container}>
             <StatusBar style = 'light'/>
@@ -12,11 +47,24 @@ const Login = ({navigation}) => {
                 source = {{uri:"https://image.freepik.com/free-vector/musical-background-with-colorful-music-notes-waves_53562-1020.jpg"}}
                 style = {styles.image}>
 
-                <TextInput placeholder = 'Enter Email' style = {styles.input1} placeholderTextColor = "white" />
-                <TextInput placeholder = 'Enter Password' style = {styles.input} placeholderTextColor = "white"/>
+                <TextInput
+            style={styles.inputemail}
+            placeholder="Email"
+            placeholderTextColor="yellow"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+          <TextInput
+            style={styles.inputpass}
+            placeholder="Password"
+            placeholderTextColor="yellow"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
+               
 
                 <View style = {styles.button}>
-                <TouchableOpacity onPress = {() => navigation.navigate('Home')}>
+                <TouchableOpacity onPress = {login}>
                     <Text style = {{fontWeight:'bold', fontSize:20, color:"white"}}>
                         Login
                     </Text>
@@ -94,7 +142,16 @@ const styles = StyleSheet.create({
         alignItems:'center',
         borderRadius:20,
         marginTop:20,
-    }
+    },
+     inputpass: {
+    backgroundColor: "grey",
+    width: "70%",
+    height: 45,
+    borderRadius: 15,
+    maxWidth: 500,
+    paddingLeft: 10,
+    marginTop: 10,
+  },
     
     
 })
