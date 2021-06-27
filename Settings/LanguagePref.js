@@ -7,6 +7,7 @@ const LanguagePref = (props) => {
     return (
 
         <LinearGradient style = {styles.container} colors = {['#202aa8', '#e92b81']}>
+            
 {/*---------------------------------------------Header------------------------------------------------------------ */}
         
         <View style={styles.header}>

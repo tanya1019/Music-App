@@ -17,7 +17,7 @@ const Updates = (props) => {
 
             <View style={{ width: "80%", alignItems: "center", justifyContent: "center" }}>
                 <Text style={styles.headertext}>
-                    Equalizer
+                    Update
                 </Text>
             </View>
 

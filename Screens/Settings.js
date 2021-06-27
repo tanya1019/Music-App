@@ -132,21 +132,22 @@ const Settings = (props) => {
 {/*---------------------------------------------------------Equalizer-------------------------------------------------------- */}
           
            <TouchableOpacity onPress = {() => props.navigation.navigate('Eqalizer')} style = {styles.touch} >
-           <View style = {styles.list}>
-               <View style = {{width:'90%',justifyContent:'center', alignItems:'flex-start'}}>
-                    <Text style = {styles.text}>
-                        Equalizer
-                    </Text>
-                    <Text style ={{color:'pink', fontSize:14 }}>
-                        Manipulate frequency
-                    </Text>
-               </View>
+                <View style = {styles.list}>
+                
+                    <View style = {{width:'90%',justifyContent:'center', alignItems:'flex-start'}}>
+                            <Text style = {styles.text}>
+                                Equalizer
+                            </Text>
+                            <Text style ={{color:'pink', fontSize:14 }}>
+                                Manipulate frequency
+                            </Text>
+                    </View>
 
-               <View  style = {{alignItems:'flex-end', width:'10%', justifyContent:'center', paddingRight:20}}>
-                    <MaterialIcons name="equalizer" size={24} color="pink" />
-               </View>
+                    <View  style = {{alignItems:'flex-end', width:'10%', justifyContent:'center', paddingRight:20}}>
+                            <MaterialIcons name="equalizer" size={24} color="pink" />
+                    </View>
 
-           </View>
+                </View>
            </TouchableOpacity>
 
 {/*----------------------------------------------------------Data Usage------------------------------------------------------ */}

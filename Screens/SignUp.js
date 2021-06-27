@@ -3,8 +3,8 @@ import { StyleSheet, Text, TextInput, View , Button, TouchableOpacity, ImageBack
 import Svg, { G, Circle } from 'react-native-svg';
 import { auth, db } from '../Config';
 import firebase from 'firebase';
-const SignUp = ({navigation}) => {
 
+const SignUp = ({navigation}) => {
 
 const [username,setUsername] = useState("")
 const [email,setEmail] = useState("")
@@ -33,34 +33,30 @@ const register = () => {
 
     return (
 
-
-       
-
-
        <View style = {styles.container}>
 
             <ImageBackground source = {{uri:"https://image.freepik.com/free-vector/musical-background-with-colorful-music-notes-waves_53562-1020.jpg"}}
                         style = {styles.image}
                         blurRadius = {0.9}>
 
-                <TextInput
+            <TextInput
             style={styles.inputuser}
             placeholder="Username"
-            placeholderTextColor="yellow"
+            placeholderTextColor='white'
             value={username}
             onChangeText={(text) => setUsername(text)}
           />
           <TextInput
             style={styles.inputemail}
             placeholder="Email"
-            placeholderTextColor="yellow"
+            placeholderTextColor='white'
             value={email}
             onChangeText={(text) => setEmail(text)}
           />
           <TextInput
             style={styles.inputpass}
             placeholder="Password"
-            placeholderTextColor="yellow"
+            placeholderTextColor='white'
             value={password}
             onChangeText={(text) => setPassword(text)}
           />
@@ -129,32 +125,36 @@ const styles = StyleSheet.create({
         paddingLeft:10,
         marginTop:65
     },
-inputuser: {
-    backgroundColor: "grey",
-    width: "70%",
-    height: 45,
-    borderRadius: 15,
-    maxWidth: 500,
-    paddingLeft: 10,
-  },
-  inputemail: {
-    backgroundColor: "grey",
-    width: "70%",
-    height: 45,
-    borderRadius: 15,
-    maxWidth: 500,
-    paddingLeft: 10,
-    marginTop: 10,
-  },
-  inputpass: {
-    backgroundColor: "grey",
-    width: "70%",
-    height: 45,
-    borderRadius: 15,
-    maxWidth: 500,
-    paddingLeft: 10,
-    marginTop: 10,
-  },
+      inputuser: {
+          backgroundColor: "#202aa8",
+          width: "70%",
+          height: 45,
+          borderRadius: 15,
+          maxWidth: 500,
+          paddingLeft: 10,
+          borderBottomColor:'grey', 
+          borderBottomWidth:1, 
+          borderTopColor:'black', 
+          borderTopWidth:1,
+        },
+        inputemail: {
+          backgroundColor: '#202aa8',
+          width: "70%",
+          height: 45,
+          borderRadius: 15,
+          maxWidth: 500,
+          paddingLeft: 10,
+          marginTop: 10,
+        },
+        inputpass: {
+          backgroundColor: '#202aa8',
+          width: "70%",
+          height: 45,
+          borderRadius: 15,
+          maxWidth: 500,
+          paddingLeft: 10,
+          marginTop: 10,
+        },
     
 })
 

@@ -11,6 +11,8 @@ const [email,setEmail] = useState("")
 const [password,setPassword] = useState("")
 const [loading, setLoading] = useState(true)
 
+{/*------------------------------------------------Direct Login------------------------------------------------------------------- */}
+
 useEffect(() => {
    const unsub = auth.onAuthStateChanged((authUser) => {
        if(authUser){
@@ -21,10 +23,10 @@ useEffect(() => {
            console.log('No User')
        }
    })
-    return unsub
-        
-    
+    return unsub 
 }, [])
+
+{/*----------------------------------------------Login Firebase--------------------------------------------------------------------- */}
 
 const login = () => {
     auth
@@ -48,16 +50,16 @@ const login = () => {
                 style = {styles.image}>
 
                 <TextInput
-            style={styles.inputemail}
+            style={styles.inputpass}
             placeholder="Email"
-            placeholderTextColor="yellow"
+            placeholderTextColor='white'
             value={email}
             onChangeText={(text) => setEmail(text)}
           />
           <TextInput
             style={styles.inputpass}
             placeholder="Password"
-            placeholderTextColor="yellow"
+            placeholderTextColor='white'
             value={password}
             onChangeText={(text) => setPassword(text)}
           />
@@ -143,14 +145,14 @@ const styles = StyleSheet.create({
         borderRadius:20,
         marginTop:20,
     },
-     inputpass: {
-    backgroundColor: "grey",
-    width: "70%",
-    height: 45,
-    borderRadius: 15,
-    maxWidth: 500,
-    paddingLeft: 10,
-    marginTop: 10,
+    inputpass: {
+        backgroundColor: '#202aa8',
+        width: "70%",
+        height: 45,
+        borderRadius: 15,
+        maxWidth: 500,
+        paddingLeft: 10,
+        marginTop: 10,
   },
     
     

@@ -8,17 +8,17 @@ import { auth, db } from '../Config';
 import firebase from 'firebase';
 
 const Account = (props) => {
-
+{/*-------------------------------------------------------Signout user------------------------------------------------------ */}
   const signOutUser = () => {
     auth.signOut().then(() => {
       props.navigation.replace("Login");
     });
   };
 
+{/*------------------------------------------------------------------------------------------------------------------- */}
 
 
-
-
+{/*------------------------------------------------------------------------------------------------------------------- */}
 
     return (
         <View style = {styles.container}>
@@ -131,12 +131,22 @@ const Account = (props) => {
         <View style = {styles.signout}>
             <TouchableOpacity onPress = {signOutUser}>
                 <Text style = {{color:'white', fontSize:20}}>
+                    Update
+                </Text>
+            </TouchableOpacity>
+        </View>
+
+        <View style = {styles.signout}>
+            <TouchableOpacity onPress = {signOutUser}>
+                <Text style = {{color:'white', fontSize:20}}>
                     Sign Out
                 </Text>
             </TouchableOpacity>
         </View>
 
-{/*-----------------------------------------------------------------end-------------------------------------------------------- */}
+        
+
+{/*-----------------------------------------------------------------End-------------------------------------------------------- */}
    
     </ScrollView>
   </View>

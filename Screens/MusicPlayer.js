@@ -3,11 +3,13 @@ import { StyleSheet, Text, TouchableOpacity, View, Image, ImageBackground } from
 import { Ionicons , Feather, SimpleLineIcons,FontAwesome, MaterialCommunityIcons, MaterialIcons } from 'react-native-vector-icons';
 import Navigation from '../Settings/Navigation';
 import Slider from '@react-native-community/slider';
+import { Audio } from 'expo-av';
 
 const MusicPlayer = ({navigation, route}) => {
     
+           
 
-
+           
 const [status, setStatus] = React.useState('pause')
 const play_pause = () => {
     if(status === 'pause'){
