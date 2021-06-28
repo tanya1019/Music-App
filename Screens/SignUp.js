@@ -23,7 +23,8 @@ const register = () => {
         db.collection("users").doc(auth.currentUser.uid).set({
           name: username,
           email: email,
-          imageUrl:''
+          imageUrl:'',
+          phone:''
         });
         navigation.navigate("Home");
       })

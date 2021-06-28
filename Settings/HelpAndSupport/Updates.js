@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "black",
-        paddingTop:40,
+        paddingTop:30,
         alignItems:'center'
       },
       header: {
@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 60,
         flexDirection: "row",
+        
       },
       headertext: {
         fontSize: 22,
@@ -104,8 +105,9 @@ const styles = StyleSheet.create({
       bell:{
           width:200,
           height:200,
-          marginTop:30,
-          marginBottom:20
+         marginTop:20,
+         marginBottom:20
+          
 
       },
     updateinfo:{

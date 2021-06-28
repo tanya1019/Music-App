@@ -1,5 +1,5 @@
-import React from 'react'
-import { ImageBackground, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, {useState, useEffect} from 'react'
+import { Alert, ImageBackground, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from 'react-native-vector-icons';
 import { FontAwesome } from '@expo/vector-icons'; 
@@ -8,6 +8,56 @@ import { auth, db } from '../Config';
 import firebase from 'firebase';
 
 const Account = (props) => {
+
+
+{/*--------------------------------------------------Update----------------------------------------------------------------- */}
+
+  const [userData, setUserData] = useState('')
+  const getUser = async() =>{
+    await db
+    .collection('users')
+    .doc(auth.currentUser.uid)
+    .get()
+    .then((doc)=> {
+      if(doc.exists){
+        setUserData(doc.data());
+        console.log(doc.data)
+      }
+    })
+  };
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
+{/*--------------------------------------------------Update Button----------------------------------------------------------------- */}
+
+const update = async() =>{
+  await db
+  .collection('users')
+  .doc(auth.currentUser.uid)
+  .update({
+    name:userData.name,
+    email: userData.email,
+    phone:userData.phone
+  })
+  .then(()=> {
+    console.log('User Updated');
+    Alert.alert('Profile Updated!', 'Your profile has been updated successfilly')
+  })
+  props.navigation.goBack();
+}
+
+{/*------------------------------------------------------------------------------------------------------------------- */}
+
+
+
+
+
+
+
+
+
 {/*-------------------------------------------------------Signout user------------------------------------------------------ */}
   const signOutUser = () => {
     auth.signOut().then(() => {
@@ -15,7 +65,7 @@ const Account = (props) => {
     });
   };
 
-{/*------------------------------------------------------------------------------------------------------------------- */}
+
 
 
 {/*------------------------------------------------------------------------------------------------------------------- */}
@@ -129,7 +179,7 @@ const Account = (props) => {
     </View>
 
         <View style = {styles.signout}>
-            <TouchableOpacity onPress = {signOutUser}>
+            <TouchableOpacity onPress = {update}>
                 <Text style = {{color:'white', fontSize:20}}>
                     Update
                 </Text>
