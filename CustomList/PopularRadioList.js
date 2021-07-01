@@ -53,6 +53,7 @@ export default function PopularRadioList(){
             paddingLeft: 15,
             marginBottom:5
           }}
+
         >
           Popular Radio
         </Text>
@@ -76,7 +77,9 @@ export default function PopularRadioList(){
                 />
                 </View>
 
-                <Text style={{ color: "white", fontSize: 18, fontWeight: "700" }}>
+                <Text style={{ color: "white", fontSize: 18, fontWeight: "700" }}
+                          numberOfLines = {1}
+          ellipsizeMode = "tail">
                   {item.name}
                 </Text>
                 </TouchableOpacity>

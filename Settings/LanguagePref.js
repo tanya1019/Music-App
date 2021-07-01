@@ -155,7 +155,11 @@ const styles = StyleSheet.create({
         width: "100%",
         height: 60,
         flexDirection: "row",
-        marginBottom:10
+        marginBottom:10,
+        borderBottomColor:'grey',
+          borderBottomWidth:1,
+          borderTopColor:'black',
+          borderTopWidth:1,
       },
 
       headertext: {
@@ -165,16 +169,21 @@ const styles = StyleSheet.create({
       },
 
       lang:{
-          width:'100%',
+          width:'90%',
           height:40,
+          borderRadius:20,
           backgroundColor:'transparent',
           justifyContent:'center',
           alignItems:'center',
           marginVertical:5,
           borderBottomColor:'grey',
-          borderBottomWidth:1,
+          borderBottomWidth:2,
           borderTopColor:'black',
-          borderTopWidth:1,
+          borderTopWidth:2, 
+          borderLeftColor:'black',
+          borderLeftWidth:2,
+          borderRightColor:'grey',
+          borderRightWidth:2  
       },
 
       langtext:{

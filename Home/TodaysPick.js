@@ -1,13 +1,51 @@
-import React, { Component } from "react";
-import { ImageBackground, TouchableOpacity } from "react-native";
+import React, { Component,useEffect } from "react";
+import { ImageBackground, TouchableOpacity, Linking } from "react-native";
 import { Text, View, StyleSheet, FlatList } from "react-native";
 import { Image } from "react-native";
 import { Surface } from "react-native-paper";
 import { AntDesign } from '@expo/vector-icons';
 import { useState } from "react";
+import MusicPlayer from "../Screens/MusicPlayer";
+import axios from "axios";
+import { Credentials } from "../Screens/Credentials";
+import base64 from 'react-native-base64';
 
-export default function RecentlyPlayed (props){
+export default function TodaysPick (props){
+  
+  const spotify = Credentials();
+  const [playlist, setPlaylist] = useState([])
+  const [songdata,setSonfdata] = useState({})
+
+  useEffect(() => {
+    axios("https://accounts.spotify.com/api/token", {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization:
+          "Basic " +
+          base64.encode(spotify.ClientId + ":" + spotify.ClientSecret),
+      },
+      data: "grant_type=client_credentials",
+      method: "POST",
+    }).then((tokenResponse) => {
+      // setToken(tokenResponse.data.access_token);
+
+      axios("https://api.spotify.com/v1/playlists/37i9dQZF1DX0XUsuxWHRQd", {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + tokenResponse.data.access_token,
+        },
+      }).then((genreResponse) => {
+        // console.log(genreResponse.data.categories.items);
+        setPlaylist(genreResponse.data.tracks.items);
+        setSonfdata(genreResponse.data)
+      });
+    });
+  }, [spotify.ClientId, spotify.ClientSecret]);
+
+ 
+
    const[songname , setSongname]= useState ( [
+  
       {
         name: "Shake it off",
         img: {
@@ -47,30 +85,36 @@ export default function RecentlyPlayed (props){
     return (
       <View style={styles.container}>
 
-        <Text style={{fontSize: 24, fontWeight: "bold",color: "white",paddingLeft: 5,}}>
-          Today's Pick
+        <Text style={{fontSize: 20, fontWeight: "bold",color: "white",paddingLeft: 5,}}>
+          {songdata.name}
+        </Text>
+
+        <Text style={{fontSize: 13, fontWeight: "normal", color: "#a1a1a1",paddingLeft: 5, paddingBottom:5}}>
+          {songdata.description}
         </Text>
 
         <FlatList
           showsHorizontalScrollIndicator = {true}
-          keyExtractor={(item) => item.id}
-          data={songname}
+          keyExtractor={(item, index) => JSON.stringify(index)}
+          data={playlist}
           horizontal={true}
           renderItem={({ item, index }) => {
             return (
-              <TouchableOpacity onPress = {() => props.navigation.navigate('MusicPlayer', {item})}>
+              <TouchableOpacity onPress = {() => Linking.openURL(item.track.external_urls.spotify)}>
               <Surface style={styles.surface}>
                 <ImageBackground
-                  style={{ width: 120, height: 120, borderRadius: 10, justifyContent:'flex-end', padding:7 }}
-                  source={item.img}
+                  style={{ width: 110, height: 110, borderRadius: 10, justifyContent:'flex-end', padding:7 }}
+                  source={{ uri: item.track.album.images[0].url }}
                   imageStyle = {{borderRadius:10}}
                 >
                     <AntDesign name="play" size={20} color="white" />
                 </ImageBackground>
                 <Text
                   style={{ color: "white", fontSize: 18, fontWeight: "700" }}
+                  numberOfLines = {1}
+                  ellipsizeMode = "tail"
                 >
-                  {item.name}
+                  {item.track.name}
                 </Text>
               </Surface>
               </TouchableOpacity>
@@ -84,7 +128,7 @@ export default function RecentlyPlayed (props){
 
 const styles = StyleSheet.create({
   container: {
-    height: 200,
+    height: 230,
     width: "100%",
     marginBottom:20,
     marginTop:10
@@ -97,6 +141,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 15,
+    
+
     
   },
 });

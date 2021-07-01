@@ -3,16 +3,17 @@ import { StyleSheet, Text, View, TouchableOpacity, TextInput, ScrollView } from 
 import { Ionicons } from "react-native-vector-icons";
 import { FontAwesome } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const CustomerSupport = (props) => {
     return (
-        <View style = {styles.container}>
+        <LinearGradient style = {styles.container} colors = {['#202aa8', '#e92b81']}>
 {/*------------------------------------Header-----------------------------------*/}
             <View style={styles.header}>
         
                  <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
                      <TouchableOpacity onPress={() => props.navigation.navigate("Home")} >
-                        <Ionicons name="chevron-back" size={30} color="#066EF5" />
+                        <Ionicons name="chevron-back" size={30} color="white" />
                      </TouchableOpacity>
                  </View>
         
@@ -145,7 +146,7 @@ const CustomerSupport = (props) => {
                 </ScrollView>
 
 {/*------------------------------------------------------------End---------------------------------------------------------- */}
-        </View>
+        </LinearGradient>
     )
 }
 
@@ -154,24 +155,29 @@ export default CustomerSupport
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "black",
-        paddingTop:40
+        backgroundColor: "transparent",
+        padding:10
       },
       header: {
-        backgroundColor: "black",
+        backgroundColor: "transparent",
         width: "100%",
         height: 60,
         flexDirection: "row",
+        borderBottomColor:'grey',
+        borderBottomColor:'grey',
+        borderBottomWidth:1,
+        borderTopColor:'black',
+        borderTopWidth:1,
       },
       headertext: {
         fontSize: 22,
         fontWeight: "bold",
-        color:'#066EF5'
+        color:'white'
       },
       box:{
           height:40,
           borderWidth:1,
-          borderColor:'#066EF5',
+          borderColor:'white',
           padding:10,
           borderRadius:20,
           justifyContent:'center',
@@ -183,16 +189,24 @@ const styles = StyleSheet.create({
           maxWidth:700,
           height:40,
           borderRadius:20,
-          backgroundColor:'#6666',
+          backgroundColor:'transparent',
           paddingLeft:10,
           fontSize:15,
-          marginTop:10
+          marginTop:10,
+                    borderBottomColor:'grey',
+          borderBottomWidth:1,
+          borderTopColor:'black',
+          borderTopWidth:1, 
+          borderLeftColor:'black',
+          borderLeftWidth:1,
+          borderRightColor:'grey',
+          borderRightWidth:1  
       },
 
       submit:{
           width:100,
           height:30,
-          backgroundColor:'#066EF5',
+          backgroundColor:'white',
           justifyContent:'center',
           alignItems:'center',
           marginTop:20,

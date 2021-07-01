@@ -29,6 +29,7 @@ import MyFavs from './MyMusic/MyFavs';
 import MyLibrary from './MyMusic/MyLibrary';
 import MusicPlayer from './Screens/MusicPlayer';
 import MusicCatogList from './Screens/MusicCatogList';
+import SongList from './Screens/SongList';
 
 
 const Stack = createStackNavigator();
@@ -69,6 +70,8 @@ export default function App(){
         options = {{headerShown:false}}/>
         <Stack.Screen name = 'MusicCatogList' component = {MusicCatogList}
         options = {{headerShown:false}}/>
+         <Stack.Screen name = 'SongList' component = {SongList}
+        options = {{headerShown : false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

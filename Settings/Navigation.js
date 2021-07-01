@@ -1,6 +1,7 @@
 import React , {useState} from 'react'
 import { TouchableOpacity,Switch , Image} from "react-native";
 import { StyleSheet, Text, View } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 import { RadioButton } from "react-native-paper";
 import { Ionicons } from "react-native-vector-icons";
 
@@ -9,7 +10,7 @@ const Navigation = (props) => {
     const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
     return (
 
-        <View style = {styles.container}>
+        <LinearGradient style = {styles.container} colors = {['#202aa8', '#e92b81']}>
 
 {/*-----------------------------------------------Header-------------------------------------------------- */}
 
@@ -17,7 +18,7 @@ const Navigation = (props) => {
 
         <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }} >
           <TouchableOpacity onPress={() => props.navigation.navigate("Settings")}>
-            <Ionicons name="chevron-back" size={30} color="#066EF5" />
+            <Ionicons name="chevron-back" size={30} color="white" />
           </TouchableOpacity>
         </View>
 
@@ -53,7 +54,7 @@ const Navigation = (props) => {
 
               <View style = {{width:'20%', alignItems:'flex-end', paddingRight:10}}>
               <Switch
-                    trackColor={{ false: "#767577", true: "#066EF5" }}
+                    trackColor={{ false: "#767577", true: "white" }}
                     thumbColor={isEnabled ? "blue" : "#f4f3f4"}
                     ios_backgroundColor="#3e3e3e"
                     onValueChange={toggleSwitch}
@@ -65,7 +66,7 @@ const Navigation = (props) => {
       </View>
 {/*-----------------------------------------------Google Maps------------------------------ */}
         
-        <View style = {styles.googlemaps}>
+        <LinearGradient style = {styles.googlemaps} colors = {['transparent', 'transparent']}>
           <View style = {{flexDirection:'row', alignItems:'center'}}>
             <Image style = {styles.image} 
             source = {require('../assets/google.jpeg')}/>
@@ -87,11 +88,11 @@ const Navigation = (props) => {
               </TouchableOpacity>
             </View>
           </View>
-        </View>
+        </LinearGradient>
 
 {/*--------------------------------------Waze---------------------------------------------- */}
         
-        <View style = {styles.googlemaps}>
+        <LinearGradient style = {styles.googlemaps} colors = {['transparent','transparent']}>
 
           <View style = {{flexDirection:'row', alignItems:'center'}}>
               <Image style = {styles.image} 
@@ -118,10 +119,10 @@ const Navigation = (props) => {
 
           </View>
 
-        </View>
+        </LinearGradient>
 
 {/*----------------------------------------End----------------------------------------------------- */}
-        </View>
+        </LinearGradient>
     )
 }
 
@@ -131,27 +132,31 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: "black",
+        backgroundColor: "transparent",
         paddingTop:40,
         alignItems:'center'
       },
 
       header: {
-        backgroundColor: "black",
+        backgroundColor: "transparent",
         width: "100%",
         height: 60,
         flexDirection: "row",
+        borderBottomColor:'grey',
+          borderBottomWidth:1,
+          borderTopColor:'black',
+          borderTopWidth:1,
       },
 
       headertext: {
         fontSize: 22,
         fontWeight: "bold",
-        color:'#066EF5'
+        color:'white'
       },
 
       heading:{
-          fontSize:20,
-          fontWeight:'600',
+          fontSize:25,
+          fontWeight:'bold',
           color:'white'
       },
 
@@ -166,9 +171,17 @@ const styles = StyleSheet.create({
       googlemaps:{
           height:150,
           width:'95%',
-          backgroundColor:'#172026',
+          backgroundColor:'transparent',
           marginTop:10,
-          borderRadius:20,     
+          borderRadius:20, 
+          borderBottomColor:'grey',
+          borderBottomWidth:2,
+          borderTopColor:'black',
+          borderTopWidth:2, 
+          borderLeftColor:'black',
+          borderLeftWidth:2,
+          borderRightColor:'grey',
+          borderRightWidth:2   
       },
 
       image:{
@@ -179,7 +192,7 @@ const styles = StyleSheet.create({
       },
 
       connect:{
-        backgroundColor:'#172026',
+        backgroundColor:'#202aa8',
         borderColor:'white',
         borderWidth:1,
         height:40,

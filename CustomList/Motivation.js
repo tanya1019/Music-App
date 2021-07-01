@@ -89,7 +89,9 @@ export default function Motivation(){
                 />
                 </View>
 
-                <Text style={{ color: "white", fontSize: 18, fontWeight: "700" }}>
+                <Text style={{ color: "white", fontSize: 18, fontWeight: "700" }}
+                          numberOfLines = {1}
+          ellipsizeMode = "tail">
                   {item.name}
                 </Text>
                 </TouchableOpacity>

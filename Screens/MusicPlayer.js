@@ -1,11 +1,45 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { StyleSheet, Text, TouchableOpacity, View, Image, ImageBackground } from 'react-native'
 import { Ionicons , Feather, SimpleLineIcons,FontAwesome, MaterialCommunityIcons, MaterialIcons } from 'react-native-vector-icons';
 import Navigation from '../Settings/Navigation';
 import Slider from '@react-native-community/slider';
 import { Audio } from 'expo-av';
+import axios from "axios";
+import { Credentials } from "../Screens/Credentials";
+import base64 from 'react-native-base64'; 
 
 const MusicPlayer = ({navigation, route}) => {
+
+ const spotify = Credentials();
+ const [track, setTrack] = useState()
+ const [token, setToken] = useState('');  
+ useEffect(() => {
+
+    axios('https://accounts.spotify.com/api/token', {
+      headers: {
+        'Content-Type' : 'application/x-www-form-urlencoded',
+        'Authorization' : 'Basic ' + base64.encode(spotify.ClientId + ':' + spotify.ClientSecret)      
+      },
+      data: 'grant_type=client_credentials',
+      method: 'POST'
+    })
+    .then(tokenResponse => {
+         
+      setToken(tokenResponse.data.access_token);
+
+      axios(`https://api.spotify.com/v1/tracks/${item.track.id}`, {
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + tokenResponse.data.access_token}
+      })
+      .then (trackresponse => {      
+        console.log(trackresponse)  
+        //setTrack(trackresponse.data.categories.items)
+      });
+      
+    });
+
+  }, [spotify.ClientId, spotify.ClientSecret]); 
+
     
            
 
@@ -25,7 +59,7 @@ const play_pause = () => {
     return (
         <View style = {styles.container}>
 
-        <ImageBackground source = {item.img} style = {{flex:1, alignItems:'center', width:'100%'}} blurRadius = {10}>
+        <ImageBackground source={{ uri: item.track.album.images[0].url }} style = {{flex:1, alignItems:'center', width:'100%'}} blurRadius = {10}>
 
 
             <View style = {styles.header}>
@@ -51,16 +85,16 @@ const play_pause = () => {
             <View style = {{width:'100%', height:'70%', alignItems:'center', elevation:20}}>
               
                 <View style = {{elevation:20, height:305, width:305, backgroundColor:'black', alignItems:'center', justifyContent:'center', borderRadius:20}}>
-                <Image source = {item.img} style = {{ width:300, height:300, borderColor:'black', borderRadius:20}}/>
+                <Image source={{ uri: item.track.album.images[0].url }} style = {{ width:300, height:300, borderColor:'black', borderRadius:20}}/>
                 </View>
 
                 <View style = {styles.songnamesec}>
-                      <View>
+                      <View style = {{width:'90%'}}>
                           <Text style = {{color:'white', fontSize:25, fontWeight:'bold'}}>
-                              {item.name}
+                              {item.track.name}
                           </Text>
                           <Text style = {{color:'white', fontSize:15, fontWeight:'bold'}}>
-                              {item.artist}
+                              {item.track.artists[0].name}
                           </Text>
                       </View>
                 <FontAwesome name="heart" size={24} color="white" />

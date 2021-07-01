@@ -1,8 +1,11 @@
 import Carousel, { Pagination } from "react-native-snap-carousel";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { ImageBackground, Dimensions } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Credentials } from "../Screens/Credentials";
+import base64 from 'react-native-base64'; 
+import axios from "axios";
 
 const CategoryCarousel = ({navigation}) => {
   const windowWidth = Dimensions.get("window").width;
@@ -231,6 +234,41 @@ const CategoryCarousel = ({navigation}) => {
       ]
     },
   ]);
+
+
+  const spotify = Credentials();
+
+  const [token, setToken] = useState('');  
+  const [genres, setGenres] = useState([]);
+
+ useEffect(() => {
+
+    axios('https://accounts.spotify.com/api/token', {
+      headers: {
+        'Content-Type' : 'application/x-www-form-urlencoded',
+        'Authorization' : 'Basic ' + base64.encode(spotify.ClientId + ':' + spotify.ClientSecret)      
+      },
+      data: 'grant_type=client_credentials',
+      method: 'POST'
+    })
+    .then(tokenResponse => {
+         
+      setToken(tokenResponse.data.access_token);
+
+      axios('https://api.spotify.com/v1/browse/categories?locale=sv_US', {
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + tokenResponse.data.access_token}
+      })
+      .then (genreResponse => {        
+        setGenres(genreResponse.data.categories.items)
+      });
+      
+    });
+
+  }, [spotify.ClientId, spotify.ClientSecret]); 
+
+
+
   return (
 
 
@@ -239,7 +277,7 @@ const CategoryCarousel = ({navigation}) => {
         layout="default"
         layoutCardOffset={0}
         ref={isCarousel}
-        data={data}
+        data={genres}
         renderItem={({ item, index }) => {
           return (
             <View
@@ -249,10 +287,10 @@ const CategoryCarousel = ({navigation}) => {
                 justifyContent: "center",
               }}
             >
-              <TouchableOpacity activeOpacity = {0.5} onPress = {() => navigation.navigate('MusicCatogList', {item})}>
+              <TouchableOpacity activeOpacity = {0.5} onPress = {() => navigation.navigate('MusicCatogList', {item, token})}>
               <ImageBackground
-                source={item.img}
-                blurRadius={3}
+                source={{uri:item.icons[0].url}}
+                blurRadius={0}
                 style={{
                   width: windowWidth * 0.7,
                   height: 150,
@@ -262,7 +300,7 @@ const CategoryCarousel = ({navigation}) => {
                 imageStyle={{ borderRadius: 30 }}
               >
                 <Text
-                  style={{ fontSize: 50, fontWeight: "bold", color: "white" }}
+                  style={{ fontSize: 25, fontWeight: "bold", color: "white", marginTop:95 }}
                 >
                   {item.name}
                 </Text>
@@ -283,9 +321,9 @@ const CategoryCarousel = ({navigation}) => {
         autoplayDelay={1000}
         autoplayInterval={2000}
       />
-
+{/* 
       <Pagination
-        dotsLength={data.length}
+        dotsLength={genres.length}
         dotColor="#202aa8"
         activeDotIndex={index}
         carouselRef={isCarousel}
@@ -301,7 +339,7 @@ const CategoryCarousel = ({navigation}) => {
         inactiveDotScale={1}
         tappableDots={true}
         containerStyle={{}}
-      />
+      /> */}
     </View>
   );
 };
@@ -314,6 +352,6 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     alignSelf: "center",
-    height:230
+    height:190
   },
 });

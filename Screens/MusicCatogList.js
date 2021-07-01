@@ -1,9 +1,29 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { StyleSheet, Text, TouchableOpacity, View, FlatList, ImageBackground, Image } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import axios from "axios";
 
 const MusicCatogList = ({ navigation, route }) => {
-  const { item } = route.params;
+  const { item, token } = route.params;
+  const [playlist, setPlaylist] = useState([])
+
+  useEffect(() => {
+    
+    axios(`https://api.spotify.com/v1/browse/categories/${item.id}/playlists?limit=10`, {
+        method: 'GET',
+        headers: { 'Authorization' : 'Bearer ' + token}
+      })
+      .then(playlistResponse => {
+        setPlaylist(playlistResponse.data.playlists.items)
+      });
+
+  }, [])
+
+
+
+
+
+
 
   return (
     <View style={styles.container}>
@@ -19,7 +39,7 @@ const MusicCatogList = ({ navigation, route }) => {
      ))} */}
 
 
-     <ImageBackground source = {item.img} style = {{flex:1,alignItems:'center', opacity: 0.8}} blurRadius= {3}>
+     <ImageBackground source = {{uri: item.icons[0].url}} style = {{flex:1,alignItems:'center', opacity: 0.8}} blurRadius= {3}>
      
      <View style = {{height:'20%', width:'100%', alignItems:'center', paddingTop:20, justifyContent:'center', flexDirection:'row'}}>
        
@@ -38,12 +58,13 @@ const MusicCatogList = ({ navigation, route }) => {
      <View style = {styles.songbg}>
 
        <FlatList
-        data={item.list}
+        data={playlist}
         keyExtractor={(item) => item.id}
         renderItem={({ item, index }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate("MusicPlayer", { item })}
+              onPress={() => {navigation.navigate("SongList", { item,token })
+            console.log(item.id)}}
               style={styles.list}
             >
               <View
@@ -56,13 +77,13 @@ const MusicCatogList = ({ navigation, route }) => {
               >
                 {/* Icon */}
                 <View style={{ justifyContent: "center", padding: 10 }}>
-                    <Image source = {item.img} style = {{height:50, width:50}}/>
+                    <Image source = {{uri: item.images[0].url}} style = {{height:50, width:50}}/>
                 </View>
                 <View style={{ height: "100%", justifyContent: "center" }}>
                   <Text style={{ fontSize: 17, fontWeight: "700", color:'white' }}>
                     {item.name}
                   </Text>
-                  <Text
+                  {/* <Text
                     style={{
                       fontSize: 15,
                       fontWeight: "600",
@@ -70,7 +91,7 @@ const MusicCatogList = ({ navigation, route }) => {
                     }}
                   >
                     {item.artist}
-                  </Text>
+                  </Text> */}
                 </View>
               </View>
               <View

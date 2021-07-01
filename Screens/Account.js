@@ -1,249 +1,343 @@
-import React, {useState, useEffect} from 'react'
-import { Alert, ImageBackground, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { Ionicons } from '@expo/vector-icons';
-import { Entypo } from 'react-native-vector-icons';
-import { FontAwesome } from '@expo/vector-icons'; 
-import { Feather , MaterialIcons} from '@expo/vector-icons';
-import { auth, db } from '../Config';
-import firebase from 'firebase';
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+  ImageBackground,
+  TextInput,
+  Alert,
+} from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import { auth, db } from "../Config";
+import { LinearGradient } from "expo-linear-gradient";
+import {
+  Ionicons,
+  Entypo,
+  FontAwesome,
+  MaterialIcons,
+} from "react-native-vector-icons";
 
 const Account = (props) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [userData, setUserData] = useState([]);
 
-
-{/*--------------------------------------------------Update----------------------------------------------------------------- */}
-
-  const [userData, setUserData] = useState('')
-  const getUser = async() =>{
+  const getUser = async () => {
     await db
-    .collection('users')
-    .doc(auth.currentUser.uid)
-    .get()
-    .then((doc)=> {
-      if(doc.exists){
-        setUserData(doc.data());
-        console.log(doc.data)
-      }
-    })
+      .collection("users")
+      .doc(auth.currentUser.uid)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setUserData(doc.data());
+          console.log(doc.data());
+        }
+      });
   };
 
   useEffect(() => {
-    getUser()
-  }, [])
+    getUser();
+  }, []);
 
-{/*--------------------------------------------------Update Button----------------------------------------------------------------- */}
+  const update = async () => {
+    await db
+      .collection("users")
+      .doc(auth.currentUser.uid)
+      .update({
+        name: userData.name,
+        email: userData.email,
+        phone: userData.phone,
+      })
+      .then(() => {
+        console.log("User Updated!");
+        Alert.alert(
+          "Profile Updated!",
+          "Your profile has been updated successfully."
+        );
+      });
 
-const update = async() =>{
-  await db
-  .collection('users')
-  .doc(auth.currentUser.uid)
-  .update({
-    name:userData.name,
-    email: userData.email,
-    phone:userData.phone
-  })
-  .then(()=> {
-    console.log('User Updated');
-    Alert.alert('Profile Updated!', 'Your profile has been updated successfilly')
-  })
-  props.navigation.goBack();
-}
+    props.navigation.goBack();
+  };
 
-{/*------------------------------------------------------------------------------------------------------------------- */}
-
-
-
-
-
-
-
-
-
-{/*-------------------------------------------------------Signout user------------------------------------------------------ */}
   const signOutUser = () => {
     auth.signOut().then(() => {
       props.navigation.replace("Login");
     });
   };
+  const [image, setImage] = useState(null);
 
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "web") {
+        const { status } =
+          await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== "granted") {
+          alert("Sorry, we need camera roll permissions to make this work!");
+        }
+      }
+    })();
+  }, []);
 
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
 
+    console.log(result);
 
-{/*------------------------------------------------------------------------------------------------------------------- */}
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
 
-    return (
-        <View style = {styles.container}>
-{/*---------------------------------------------------------------Header------------------------------------------- */}
-          
-           <View style = {styles.header}>
-                <View style = {{width:'10%'}}>
-                    <TouchableOpacity onPress = {() => props.navigation.openDrawer()}>
-                        <Entypo name="menu" size={28} color="black" />
-                    </TouchableOpacity>
-                </View>
+  return (
+    <View style={styles.conatiner}>
+      {/* {/---------------------------------------------------------Header Section-------------------------------------------------------------------------/} */}
 
-                <View style = {{width:'80%', alignItems:'center'}}>
-                  <Text style = {{fontWeight:'bold', fontSize:20}}>
-                    Account
-                  </Text>
-                </View>
-
-                <View style = {{width:'10%'}}>
-                   
-                </View>
-            </View>
-
-{/*--------------------------------------------------------Profile Image----------------------------------------------------- */}
-        
-        <ImageBackground source = {{uri :'https://i.pinimg.com/originals/75/51/e5/7551e5bde057bdc8707baf5bb63d2550.jpg'}}
-             style = {{width:200, height:200, marginTop:20, marginBottom:20}} imageStyle = {{borderRadius:300}}  >
-            <FontAwesome name = 'camera' size ={30} color = 'grey' style ={{position:'absolute', top:155, left:155}} />
-        </ImageBackground>
-
-{/*------------------------------------------------------------Real name------------------------------------------------ */}
-       
-        <ScrollView style = {{width:'100%'}} contentContainerStyle = {{alignItems:'center'}}>
-        <View style={styles.userinfo}>
-        <View style = {{width:'90%'}}>
-          <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
-            Display Name
+      <View style={styles.header}>
+        <View style={{ width: "10%" }}>
+          <TouchableOpacity onPress={() => props.navigation.openDrawer()}>
+            <Entypo name="menu" size={30} color="black" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.mainContainer}>
+          <Text style={{ color: "black", fontSize: 22, fontWeight: "bold" }}>
+            Account
           </Text>
-          <TextInput
-            placeholder="TANYA THAKUR"
-            placeholderTextColor="#066EF5"
-            style={styles.userinput}
-          />
         </View>
-        <View style = {{width:'10%', justifyContent:'flex-end', paddingBottom:8}}>
-          <MaterialIcons name="edit" size={30} color="black" />
-        </View>
+        <View style={{ width: "10%" }}></View>
       </View>
 
-{/*------------------------------------------------------Username--------------------------------------------------------- */}
-        
+      {/* {/----------------------------------------Screen Content-----------------------------------------------------------------------/}
+      {/----------------------------------------Profile Photo-------------------------------------------------------------------------/} */}
+      <View
+        style={{ width: 200, height: 200, marginTop: 20, marginBottom: 10 }}
+      >
+        {image && (
+          <ImageBackground
+            source={{
+              uri: image,
+            }}
+            style={{ width: 200, height: 200, marginTop: 20, marginBottom: 10 }}
+            imageStyle={{ borderRadius: 300 }}
+          ></ImageBackground>
+        )}
+        <FontAwesome
+          name="camera"
+          size={35}
+          color="grey"
+          style={{ position: "absolute", top: 155, left: 155 }}
+          onPress={pickImage}
+        />
+      </View>
+      {/* {/----------------------------------------Display name-------------------------------------------------------------------------/} */}
+      <ScrollView
+        style={{ width: "100%" }}
+        contentContainerStyle={{ alignItems: "center" }}
+      >
         <View style={styles.userinfo}>
-          <View style = {{width:'90%'}}>
-              <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
-                Username
-              </Text>
-
-              <TextInput
-                placeholder="tanya__1019"
-                placeholderTextColor="#066EF5"
-                style={styles.userinput}
-              />
-
+          <View style={{ width: "90%" }}>
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>
+              Display Name
+            </Text>
+            <TextInput
+              placeholder="Enter your name"
+              placeholderTextColor="orange"
+              style={styles.userinput}
+              value={userData ? userData.name || "" : ""}
+              onChangeText={(txt) => setUserData({ ...userData, name: txt })}
+            />
           </View>
-
-          <View style = {{width:'10%', justifyContent:'flex-end', paddingBottom:8}}>
-             <MaterialIcons name="edit" size={30} color="black" />
+          <View
+            style={{
+              width: "10%",
+              justifyContent: "flex-end",
+              paddingBottom: 5,
+            }}
+          >
+            <MaterialIcons name="edit" size={30} color="white" />
           </View>
-      </View>
+        </View>
+        {/* {/----------------------------------------User Info-----------------------------------------------------------------------------/} */}
 
-{/*------------------------------------------------------------Email---------------------------------------------------- */}
-      <View style={styles.userinfo}>
-          <View style = {{width:'90%'}}>
-            <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
+        {/* <View style={styles.userinfo}>
+          <View style={{ width: "90%" }}>
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>
+              Username
+            </Text>
+            <TextInput
+              placeholder="tanya19"
+              placeholderTextColor="orange"
+              style={styles.userinput}
+            />
+          </View>
+          <View
+            style={{
+              width: "10%",
+              justifyContent: "flex-end",
+              paddingBottom: 5,
+            }}
+          >
+            <MaterialIcons name="edit" size={30} color="white" />
+          </View>
+        </View> */}
+        {/*---------------------------------------Email------------------------------------------------------------------------ */}
+        <View style={styles.userinfo}>
+          <View style={{ width: "90%" }}>
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>
               Email
             </Text>
             <TextInput
-              placeholder="tanya@gmail.com"
-              placeholderTextColor="#066EF5"
+              placeholder="Enter your email"
+              placeholderTextColor="orange"
               style={styles.userinput}
+              value={userData ? userData.email || "" : ""}
+              onChangeText={(txt) => setUserData({ ...userData, email: txt })}
             />
           </View>
-
-          <View style = {{width:'10%', justifyContent:'flex-end', paddingBottom:8}}>
-            <MaterialIcons name="edit" size={30} color="black" />
+          <View
+            style={{
+              width: "10%",
+              justifyContent: "flex-end",
+              paddingBottom: 5,
+            }}
+          >
+            <MaterialIcons name="edit" size={30} color="white" />
           </View>
-          
-      </View>
-
-{/*-------------------------------------------------------Contact Number----------------------------------------------------- */}
-    
-    <View style={styles.userinfo}>
-        <View style = {{width:'90%'}}>
-            <Text style={{ fontWeight: "bold", fontSize: 18, color: "white" }}>
-              Contact Info
+        </View>
+        {/* {/-------------------------------------Conact no.-----------------------------------------------------------------/} */}
+        <View style={styles.userinfo}>
+          <View style={{ width: "90%" }}>
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>
+              Contact no.
             </Text>
             <TextInput
-              placeholder="123456789"
-              placeholderTextColor="#066EF5"
+              placeholder="enter your Contact no."
+              placeholderTextColor="orange"
+              style={styles.userinput}
+              value={userData ? userData.phone || "" : ""}
+              onChangeText={(txt) => setUserData({ ...userData, phone: txt })}
+            />
+          </View>
+          <View
+            style={{
+              width: "10%",
+              justifyContent: "flex-end",
+              paddingBottom: 5,
+            }}
+          >
+            <MaterialIcons name="edit" size={30} color="white" />
+          </View>
+        </View>
+        {/* {/------------------------------------Gender ------------------------------------------------------------------------------------------------/} */}
+        {/* <View style={styles.userinfo}>
+          <View style={{ width: "90%" }}>
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>
+              Gender
+            </Text>
+            <TextInput
+              placeholder="Female"
+              placeholderTextColor="orange"
               style={styles.userinput}
             />
-        </View>
+          </View>
+          <View
+            style={{
+              width: "10%",
+              justifyContent: "flex-end",
+              paddingBottom: 5,
+            }}
+          >
+            <MaterialIcons name="edit" size={30} color="white" />
+          </View>
+        </View> */}
+        {/* {/---------------------------------SignOut Button Section------------------------------------------------------------------------------------/} */}
+        <LinearGradient
+          colors={["#ff8303", "orange", "orange", "#ff8303"]}
+          style={styles.signout}
+        >
+          <View>
+            <TouchableOpacity onPress={update}>
+              <Text
+                style={{ color: "black", fontSize: 20, fontWeight: "bold" }}
+              >
+                Update
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </LinearGradient>
 
-        <View style = {{width:'10%', justifyContent:'flex-end', paddingBottom:8}}>
-            <MaterialIcons name="edit" size={30} color="black" />
-        </View>
-
+        <LinearGradient
+          colors={["#ff8303", "orange", "orange", "#ff8303"]}
+          style={styles.signout}
+        >
+          <View>
+            <TouchableOpacity onPress={signOutUser}>
+              <Text
+                style={{ color: "black", fontSize: 20, fontWeight: "bold" }}
+              >
+                SignOut
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </LinearGradient>
+        {/* {/---------------------------------------End-----------------------------------------------------------------------------------------------------/} */}
+      </ScrollView>
     </View>
+  );
+};
 
-        <View style = {styles.signout}>
-            <TouchableOpacity onPress = {update}>
-                <Text style = {{color:'white', fontSize:20}}>
-                    Update
-                </Text>
-            </TouchableOpacity>
-        </View>
-
-        <View style = {styles.signout}>
-            <TouchableOpacity onPress = {signOutUser}>
-                <Text style = {{color:'white', fontSize:20}}>
-                    Sign Out
-                </Text>
-            </TouchableOpacity>
-        </View>
-
-        
-
-{/*-----------------------------------------------------------------End-------------------------------------------------------- */}
-   
-    </ScrollView>
-  </View>
-            
-    )
-}
-
-export default Account
+export default Account;
 
 const styles = StyleSheet.create({
-
-    container:{
-        paddingTop:50,
-        flex:1,
-        backgroundColor:'black',
-        alignItems:'center'
-    },
-
-    header:{
-        width :"100%",
-        height:50,
-        backgroundColor:'#066EF5',
-        justifyContent:'center',
-        alignItems:"center",
-        flexDirection:'row'
-    }, 
-
-    userinput: {
-        width: "70%",
-        height: 40,
-        paddingLeft:15
-        },
-
-      userinfo: {
-        width: "100%",
-        height: 80,
-        padding: 5,
-        flexDirection: "row",
-      },
-      signout:{
-          backgroundColor:'#066EF5',
-          height:50,
-          width:150,
-          justifyContent:'center',
-          alignItems:'center',
-          borderRadius:20,
-          marginTop:40
-      }
-    
-})
+  conatiner: {
+    flex: 1,
+    backgroundColor: "black",
+    paddingTop: 60,
+    alignItems: "center",
+  },
+  mainContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    width: "80%",
+  },
+  header: {
+    /*flexDirection: "row",
+    alignItems: "flex-start",
+    paddingHorizontal: 10,*/
+    width: "100%",
+    height: 60,
+    backgroundColor: "#ff8303",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
+  },
+  userinput: {
+    width: "70%",
+    height: 40,
+    padding: 8,
+    color: "orange",
+  },
+  userinfo: {
+    width: "100%",
+    height: 70,
+    padding: 7,
+    flexDirection: "row",
+  },
+  signout: {
+    backgroundColor: "orange",
+    height: 50,
+    width: 150,
+    borderRadius: 20,
+    alignItems: "center",
+    marginTop: 40,
+    justifyContent: "center",
+  },
+});

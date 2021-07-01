@@ -1,6 +1,7 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 import { RadioButton } from "react-native-paper";
 import { Ionicons } from "react-native-vector-icons";
 
@@ -9,14 +10,14 @@ const Equalizer = (props) => {
 
   return (
 
-    <View style={styles.container}>
+    <LinearGradient style={styles.container} colors = {['#202aa8', '#e92b81']}>
 
 {/*-----------------------------------------------------Header---------------------------------------------------------------- */}
       <View style={styles.header}>
 
         <View style={{ width: "10%", justifyContent: "center", paddingLeft: 5 }}>
           <TouchableOpacity onPress={() => props.navigation.navigate("Settings")} >
-            <Ionicons name="chevron-back" size={30} color="#066EF5" />
+            <Ionicons name="chevron-back" size={30} color="white" />
           </TouchableOpacity>
         </View>
 
@@ -37,7 +38,7 @@ const Equalizer = (props) => {
           status={checked === "first" ? "checked" : "unchecked"}
           onPress={() => setChecked("first")}
           uncheckedColor="white"
-          color="#066EF5"
+          color="pink"
         />
 
         <Text style={styles.optionname}>
@@ -50,8 +51,8 @@ const Equalizer = (props) => {
           value="second"
           status={checked === "second" ? "checked" : "unchecked"}
           onPress={() => setChecked("second")}
-          uncheckedColor="white"
-          color="#066EF5"
+          uncheckedColor="pink"
+          color="pink"
         />
         <Text style={styles.optionname}>
           Pop
@@ -63,8 +64,8 @@ const Equalizer = (props) => {
           value="third"
           status={checked === "third" ? "checked" : "unchecked"}
           onPress={() => setChecked("third")}
-          uncheckedColor="white"
-          color="#066EF5"
+          uncheckedColor="pink"
+          color="pink"
         />
         <Text style={styles.optionname}>
           Classic
@@ -76,8 +77,8 @@ const Equalizer = (props) => {
           value="fourth"
           status={checked === "fourth" ? "checked" : "unchecked"}
           onPress={() => setChecked("fourth")}
-          uncheckedColor="white"
-          color="#066EF5"
+          uncheckedColor="pink"
+          color="pink"
         />
         <Text style={styles.optionname}>
           Jazz
@@ -89,15 +90,15 @@ const Equalizer = (props) => {
           value="fifth"
           status={checked === "fifth" ? "checked" : "unchecked"}
           onPress={() => setChecked("fifth")}
-          uncheckedColor="white"
-          color="#066EF5"
+          uncheckedColor="pink"
+          color="pink"
         />
         <Text style={styles.optionname}>
           Rock
         </Text>
       </View>
 {/*-----------------------------------------------End----------------------------------------------------------- */}
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -110,15 +111,19 @@ const styles = StyleSheet.create({
     paddingTop:40
   },
   header: {
-    backgroundColor: "black",
+    backgroundColor: "transparent",
     width: "100%",
     height: 60,
     flexDirection: "row",
+    borderBottomColor:'grey',
+          borderBottomWidth:1,
+          borderTopColor:'black',
+          borderTopWidth:1,
   },
   headertext: {
     fontSize: 22,
     fontWeight: "bold",
-    color:'#066EF5'
+    color:'white'
   },
   option: {
     width: "100%",
